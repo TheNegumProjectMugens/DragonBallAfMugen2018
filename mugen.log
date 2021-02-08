@@ -1,0 +1,212 @@
+------------------------------------------
+M.U.G.E.N ver 1.00 (2010.03.20) status log
+------------------------------------------
+Parsing command line...
+Command line: C:\Users\Efinium\Downloads\AF MUGEN PLV\Dragon Ball AF Mugen 2018\DragonBall AF MUGEN byPolvito47.exe
+Parse command line OK
+Initializing...
+Allocating game variables
+Reading configuration file...OK
+Initializing timer...performance timer enabled...frequency 2929685...OK
+Initializing keyboard...configuring...OK
+Initializing input engine...OK
+Initializing sound...OK
+Initializing graphics...gameCoord 640x480...render mode 0_5...trying 640x480x16 mode 0x0...success...OK
+Setting callbacks...OK
+Initializing font...OK
+Initializing game variables...OK
+Loading system fonts...OK
+Loading options...
+Initializing pads...failed
+Reinitializing input engine...OK
+Remapping keys...OK
+Reinitializing input engine...OK
+Options loaded OK
+Loading system...
+  Load system file system.def...OK
+  Load system spr...OK
+  Load system snd...OK
+  Load system fonts...OK
+  Load system anim...OK
+  Load [Title Info]...OK
+  Load [Option Info]...OK
+  Load [Select Info]...OK
+  Load [VS Screen]...OK
+  Load [Victory Screen]...OK
+  Load [Demo Mode]...OK
+  Load [Continue Screen]...OK
+  Load [Game Over Screen]...OK
+  Load [Win Screen]...OK
+  Load [Survival Results Screen]...OK
+  Load [Default Ending]...OK
+  Load [End Credits]...OK
+  Load TitleBG...VersusBG...VictoryBG...SelectBG...OptionBG...OK
+  Loading fight data
+    Opening fight data file ./data/rumblebar/fight.def...OK
+    Reading [Files]...OK
+    Loading fonts...OK
+    Load fight anim...OK
+    Reading [Lifebar]...[Turns Lifebar]...[Simul Lifebar]...[Powerbar]...
+    [Face]...[Simul Face]...[Turns Face]...
+    [Name]...[Simul Name]...[Turns Name]...
+    [Time]...[Combo]...[Round]...[WinIcon]...OK
+    Allocating explods...OK
+  Fight data loaded OK
+System loaded OK
+Initialize OK
+Set up graphics...timer...OK
+Playing storyboard intro.def: scene
+Storyboard file not found: intro.defInitializing character info...OK
+Initializing select screen...finding characters...
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+
+  Error reading character file: chars/x/x.def
+OK
+
+Entering main loop
+Playing storyboard intro2.def: scene
+Storyboard file not found: intro2.defEntering character select.
+Attempting to set graphics to 640x480x16 mode 0x0 (fullscreen)...success
+Loading character chars/Trunks SSJ2/Trunks SSJ2.def...
+  Loading info...OK
+  Loading cmd command set Trunks.cmd...OK
+  Loading cns Trunks.cns...OK
+  Loading cns Helpers.cns...OK
+  Loading cns Moves.cns...OK
+  Loading cns Specials.cns...OK
+  Loading cmd state entry Trunks.cmd...OK
+  Loading common states common1.cns...OK
+  Unloading command names...OK
+  Loading sff Trunks.sff...OK
+  Loading anim Trunks.air...OK
+  Loading snd Trunks.snd...OK
+  Loading pals...(1,1)(1,2)(1,3)(1,4)OK
+  SFF v1.01 palette hack engaged.
+  7215 expressions (2069 on trigger lines)
+Character Trunks SSJ2.def loaded OK
+Loading character chars/Super 17/Super 17.def...
+  Loading info...OK
+  Loading cmd command set Super17.cmd...OK
+  Loading cns Super17.cns...OK
+  Loading cmd state entry Super17.cmd...OK
+  Loading common states common1.cns...OK
+  Unloading command names...OK
+  Loading sff Super17.sff...OK
+  Loading anim Super17.air...OK
+  Loading snd Super17.snd...OK
+  Loading pals...(1,1)(1,2)(1,3)(1,4)(1,5)(1,6)OK
+  SFF v1.01 palette hack engaged.
+  12650 expressions (3415 on trigger lines)
+Character Super 17.def loaded OK
+Initializing stage...
+  Loading BG...OK
+  Allocating helpers...OK
+Stage initialized OK
+Start of game loop
+Attempting to set graphics to 640x480x16 mode 0x0...success
+End of game loop
+Total time: 29.62s
+Total frames: 1742 	Skipped frames: 1
+Avg game rate: 58.81
+Avg frame rate: 58.78
+
+Entering character select.
+Returned from main loop
+Deinitializing...
+Frames      : 1742
+Time elapsed: 58.700 sec
+ticks: 5870, tps: 100, start 85, end 5955
+
+Clearing player cache...

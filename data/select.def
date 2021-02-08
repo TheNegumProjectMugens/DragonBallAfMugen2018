@@ -1,0 +1,459 @@
+
+;-----------------------------------------------
+DragonBall Z M.U.G.E.N Edition 2014 by Kaioh-SAMA
+;-----------------------------------------------
+
+[Characters]
+Hero
+Hero SSJ
+Android Hero
+Majin Hero
+Hero Xenoverse
+Goku Kid
+Goku
+Goku Legend SSJ
+Goku Iadora
+Goku Armor
+Goku SSJ
+Goku SSJ2
+Goku SSJ3
+Goku Transform
+Mystic Goku
+Goku GT Adulto
+Kid Goku GT
+Goku kid SSJ3
+Goku SSJ4
+Goku SSJ4 GT
+Goku SSJ4 FP
+Goku AF
+Goku SSJ5
+Goku SSJ God
+Goku fukkatsu no f
+Vegeta Saiyan
+Vegeta Namek
+Vegeta SSJ
+Vegeta USSJ
+Vegeta SSJ2
+Vegeta Transform
+Vegeta GT
+Vegeta GT SSJ
+Vegeta GT SSJ2
+Vegeta GT Transform
+Vegeta SSJ3 Absalon
+Vegeta SSJ4
+Vegeta SSJ4 GT
+Vegeta SSJ4 FP
+Vegeta SSJ5
+Vegeta SSJ God
+Vegeta fukkatsu no f
+Vegetto
+Vegetto SSJ
+Vegetto SSJ3
+Vegetto Transform
+Super_Vegetto
+Vegetto ssj god
+Vegetto SSGSS
+Gogeta SSJ
+Gogeta SSJ3
+Gogeta SSJ4
+Gogeta SSJ5
+SSJ God Gogeta
+Goku Jr
+Goku Jr Adult
+Vegeta Jr Adult
+Gohan
+Gohan Namek
+Gohan Armor SSJ
+Gohan SSJ
+Gohan SSJ2
+Gohan All Forms
+Gohan SSJ2 Movie 9
+Saiyaman
+x
+x
+x
+x
+Gohan Training
+Gohan Adult SSJ
+Gohan Z Sword
+Gohan SSJ Z
+Mystic Gohan
+Gohan GT
+GOHAN AF Z SWORD
+GOHAN AF SSJ4
+Future Gohan
+x
+x
+x
+x
+Future Gohan SSJ3
+Future Trunks
+Trunks Sword
+Trunks 2
+x
+x
+x
+x
+Super Trunks
+Trunks USSJ
+Trunks SSJ2
+Trunks SSJ3
+Trunks GT
+Trunks SSJ4
+Kid Trunks
+Kid Trunks SSJ
+Kid Goten
+x
+x
+x
+x
+Kid Goten SSJ
+Goten GT
+Goten AF
+Gotenks
+x
+x
+x
+x
+Gotenks SSJ
+Gotenks SSJ3
+Gotenks Adult
+Gotenks GT ssj3
+Gotenks SSJ4
+Vegetrunks
+Picceta
+Gotan Sword
+Lif SSJ
+x
+x
+x
+x
+Slufer SSJ
+Liffer ssj
+Matt
+Son Gohan
+x
+x
+x
+x
+Jackie Chun
+Pan Transform
+Bulla
+Videl
+chichi
+Piccolo Cape
+Kid Krillin
+Krillin
+Krillin Z
+x
+x
+x
+x
+Chiaotzu
+Tien
+Yamcha
+Dende
+x
+x
+x
+x
+Nail
+Pikkon
+Supreme Kai
+Tapion
+Tarble
+Uub
+Majuub
+mrsatan
+fasha
+x
+x
+x
+x
+Bardock
+Bardock SSJ
+Bardock SSJ3
+Bardock SSJ4
+x
+x
+x
+x
+Bardock SSJ5
+Android 8
+Arale
+akuman
+General Blue
+Taopaipai
+Metal Taopaipai
+Oficial Black
+FusedRobotPilaf
+x
+x
+x
+x
+Giran
+BearThief
+King Piccolo
+LordSlug
+Garlic Jr
+Saibaman
+Nappa
+Raditz
+Raditz SSJ
+Turles
+Turles SSJ
+turles ssj3
+Turles ssj devil
+Kiwi
+Dodoria
+Zarbon
+Ginyu
+Recoome
+Burter
+Jeice
+Guldo
+Frieza 1st
+Frieza All Forms
+Frieza
+Frieza Full Power
+Mecha Frieza
+Gold_Freezer
+Cooler
+Cooler Final
+Metal Cooler
+Kuriza
+ize
+Greyn
+Kutiengo
+Kaddish
+Dr. Gero
+Android 19
+Android 13
+Super Android 13
+Android 15
+Android 16
+Android 17
+Android 17 clone
+Super 17
+Android 18 2
+Cell 1st Form
+Cell 2nd Form
+Cell
+Cell Super Perfect
+Cellin
+Cell AF
+Cell Freezer
+Cell SSGSS
+Bojack_normal
+Bojack
+Zangya
+Hatchiyack
+BabidiZ2
+Spopovich
+Dabura
+PuiPui
+Majin Vegeta SSj2
+Majin Goku SSJ2
+Majin Buu
+Super Buu
+boo gotenks
+Buu Gohan
+Kid Buu
+Janemba
+hildegard
+abo
+kado
+Abokado
+Rildo
+Baby
+Baby Gohan
+Baby Vegeta
+Baby Vegeta SSJ2
+Super baby Vegeta
+Super Baby Vegeta Ozaru
+Broly SSJ
+Broly LSSJ
+Broly LSSJ3
+Limiter Cut Broly
+Broly LSSJ5
+BROKU SSJ
+randomselect
+Brojack
+Nuova Shenron
+Eis Shenron
+Omega Shenron
+Evil Goku
+Evil Goku SSJ3
+Evil Goku SSJ4
+EvilGoku SSJ5
+Xicor
+Xicor SSJ3
+Xicor SSJ4
+West Supreme Kai
+Bills
+Oozaru
+Oozaru SSJ
+OozaruVegeta
+Ohzaru's
+Saibamen Invasion
+Cell Jr Invasion
+randomselect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;-----------------------
+[ExtraStages]
+stages/NewTenkaichi.def
+stages/basin.def
+stages/Battle_Saiyan.def
+stages/Budokai-sunset.def
+stages/Tournament.def
+stages/tufflep.def
+stages/GarlicJr-Lookout.def
+stages/SnakewayN.def
+stages/Kamis_Lookout.def
+stages/cataract.def
+stages/Campo_de_batalla.def
+stages/PlanetaKaioshin.def
+stages/Planet_Gods_Goku.def
+stages/Piccolo_Waterfall.def
+stages/karin.def
+stages/karintemple.def
+stages/road.def
+stages/Janemba.def
+stages/New_Tuffle_Planet.def
+stages/picolo.vs.17.def
+stages/frieza_spaceship.def
+stages/Destruction.def
+stages/Fight_Field.def
+stages/Giant_Plants.def
+stages/WrathOfTheDragon.def
+stages/Training_Field.def
+stages/Vegeta_Death.def
+stages/Snakeway.def
+stages/KAIOH.def
+stages/dbz_gravity_room.def
+stages/dbz_alife_tourn.def
+stages/rocky_mountain.def
+stages/Desert_Rain.def
+stages/Burning_Forest.def
+stages/Cliff_of_Desolation.def
+stages/Storm2.def
+stages/Ice_dbz.def
+stages/Arctic.def
+stages/Rocks vegeta.def
+stages/Infinity World.def
+stages/kingkai.def
+stages/kamehouse.def
+stages/DM_supreme_kais_planet.def
+stages/dbz_kame_house.def
+stages/dbz_frieza_spaceship2.def
+stages/King_Piccolo.def
+stages/Destroyed_Namek.def
+stages/Waterfall_Night_HR.def
+stages/Capsule_Corp_HR.def
+stages/Earth_Rocks.def
+stages/satan.def
+stages/tenkaichiHR.def
+stages/BardockStage.def
+stages/City_Destroyed.def
+stages/Nuevo_vegita2.def
+stages/Time_Chamber_HR.def
+stages/raditz_arrived.def
+stages/Destruction_HR.def
+stages/Nameku.def
+stages/Buu's House.def
+stages/Baba_Arena.def
+stages/CELL_GAMES.def
+stages/tournoi.def
+stages/trainning.def
+stages/Dr.Slump_House.def
+stages/Planet_Zun.def
+stages/Final_Battle_HR.def
+stages/Planet_Freezer_79.def
+stages/Desert-Battle.def
+stages/ozharu_night.def
+stages/CityDestroyed_Night_Rain.def
+stages/Confrontation_train.def
+stages/dbkai-mountaintop.def
+stages/Namekusein.def
+stages/Tree_Of_Might.def
+stages/The_Hopes_Gone.def
+stages/Volcano-GelboPlanetHR.def
+stages/SB2-snowy_aurora_borealis.def
+stages/goku house.def
+stages/The Greatest Saiyans.def
+stages/satan_challanger.def
+stages/Céu.def
+stages/Inferno.def
+stages/Rocks_Earth_Kai.def
+stages/Tenkaichi Budokai.def
+stages/dbchamber.def
+stages/dbdesert.def
+stages/dbnamek.def
+stages/dbz1-starrynight.def
+stages/dbz_namek_islands.def
+stages/Desert Rain.def
+stages/Desert_BYR.def
+stages/Desert_BYR-noche.def
+stages/deserto-dbz2-temp.def
+stages/df_city.def
+stages/Estanque_sangriento.def
+stages/field.def
+stages/Goku's_House.def
+stages/Inside_Buu.def
+stages/Island.def
+stages/kame-house.def
+stages/Mountain_Road.def
+stages/Namek.def
+stages/Namek2.def
+stages/Namek_Biget.def
+stages/NAMEKD.def
+stages/Piccolo Daimaoh Palace.def
+stages/Piccolo's_Waterfall.def
+stages/Planeta Supremo.def
+stages/RagingSnow.def
+stages/SB2-HR-desert-sunset.def
+stages/Son-gohan_oiajii.def
+stages/Tenkaichi.def
+stages/venezula.def
+stages/World Janemba.def
+
+
+
+
+;---------------------------------------------------------------------
+[Options]
+ ;Here you set the maximum number of matches to fight before game ends
+ ;in Arcade Mode. The first number is the number of matches against
+ ;characters with order=1, followed by order=2 and order=3 respectively.
+ ;For example, for 4,3,1 you will fight up to 4 randomly-picked
+ ;characters who have order=1, followed by 3 with order=2 and 1 with
+ ;order=3.
+arcade.maxmatches = 3,3,3,2,1
+
+
+ ;Maximum number of matches to fight before game ends in Team Mode.
+ ;Like arcade.maxmatches, but applies to Team Battle.
+team.maxmatches = 3,3,3,2,1
+
+team.arcade.maxmatches = 3,3,3,2,1
+team.versus.maxmatches = 3,3,3,2,1
