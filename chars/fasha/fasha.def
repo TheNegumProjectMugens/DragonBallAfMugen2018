@@ -1,0 +1,27 @@
+[Info]
+name="fasha by hermo"
+DisplayName="fasha"
+versiondate=05/05/2013
+mugenversion=
+author="hermoduro"
+pal.defaults=1,2,3,4,5
+
+[Files]
+cmd=fasha.cmd
+cns=fasha.cns
+st=fasha.cns
+stcommon=common1.cns
+sprite=fasha.sff
+anim=fasha.air
+sound=fasha.snd
+pal1=fasha.act
+pal2=fasha.act
+pal3=fasha3.act
+pal4=fasha4.act
+pal5=fasha5.act
+pal6=fasha.act
+st1=fasha-intros.cns
+st2=fasha-intros.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard=

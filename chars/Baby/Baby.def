@@ -1,0 +1,26 @@
+[Info]
+name ="Baby"
+displayname ="Baby"
+versiondate = 
+mugenversion = 
+author ="Deddy95, Squall"
+;Deddy95 - Spriter
+;Squall - Coder
+;Colosse - AI & beams fixed, big portrait 
+pal.defaults =1
+
+[Files]
+cns =Baby.cns
+cmd =Baby.cmd
+stcommon =common1.cns
+sprite =Baby.sff
+anim =Baby.air
+st =Baby.cns
+sound =Baby.snd
+pal1=Baby.act
+pal2=Babyrosso.act
+pal3=Babygrigio.act
+pal4=Babynero.act
+[Arcade]
+intro.storyboard=
+ending.storyboard=

@@ -1,0 +1,33 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Vegeta by DM"
+displayname = "SSJ God Vegeta"
+versiondate = 04,14,2002
+mugenversion = 11,01,2001
+author = "ItzGameman"
+pal.defaults = 1,2
+
+[Files]
+sprite = sprite.sff
+anim = anim.air
+sound = snd.snd
+cmd = command.cmd
+cns = constants.cns
+stcommon = common1.cns
+st = States\basico.cns
+st1 = States\normal.cns
+st2 = States\helpers.cns
+st3 = States\specials.cns
+st4 = States\supers.cns
+st5 = States\hipers.cns
+st6 = States\ai.cns
+st7 = States\combos.cns
+pal1 = ssj god Vegeta.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = ..\data\final.def

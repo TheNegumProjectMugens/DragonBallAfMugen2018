@@ -1,0 +1,265 @@
+;NORMAL TO SSJ---------------------------------------------------------------------------
+[StateDef 7000]
+type = S
+physics = S
+ctrl = 0
+velset = 0,0
+anim = 7000
+poweradd = -1000
+
+[State 0]
+type = SuperPause
+trigger1 = time = 0
+time = 100
+anim = -1
+movetime = 100
+
+[State 0]
+type = Explod
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+anim = 5995   ; RESPLANDOR
+pos = 0,-40
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 5
+ownpal = 1
+scale = 1,1
+removetime = -2
+supermove = 1
+
+[State 0]
+type = Explod
+trigger1 = animelem = 2
+anim = 9400 ; POLVO
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 0
+ownpal = 1
+scale = 0.4,0.4
+removetime = 30
+supermove = 1
+
+[State 0]
+type = Explod
+trigger1 = animelem = 2
+anim = 6007     ; polvITO
+pos = 5,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 3
+ownpal = 1
+scale = 0.85,0.85
+bindtime = -1
+removetime = 30
+supermove = 1
+
+
+
+
+
+[State 0]
+type = Explod
+trigger1 = animelem = 2
+anim = 6004    ; AURA BLANCA
+pos = 1,5
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 3
+ownpal = 1
+scale = 0.45,0.45
+bindtime = -1
+removetime = 30
+supermove = 1
+
+[State 0]
+type = Explod
+trigger1 = animelem = 3
+anim = 16004     ;AURA AMARILLA
+pos = 1,5
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 3
+ownpal = 1
+scale = 0.5,0.5
+bindtime = -1
+removetime = 50
+supermove = 1
+
+
+[State 0]
+type = Explod
+trigger1 = animelem = 3
+anim = 36004 ; rayos
+pos = 0,-40
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 3
+ownpal = 1
+scale = 0.5,0.5
+bindtime = -1
+removetime = 50
+supermove = 1
+
+
+[State 0]
+type = Explod
+trigger1 = animelem = 3
+anim = 9912     ; polvo grande
+pos = -5,5
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 3
+ownpal = 1
+scale = 0.5,0.5
+bindtime = -1
+removetime = 50
+supermove = 1
+
+
+[State 0]
+type = Explod
+trigger1 = animelem = 3
+anim = 9916
+pos = 5,5
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 3
+ownpal = 1
+scale = 0.5,0.5
+bindtime = -1
+removetime = 50
+supermove = 1
+
+
+
+[State 0]
+type = Explod
+trigger1 = animelem = 3
+anim = 9401   ;circulo amarillo
+pos = 0,5
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 0
+ownpal = 1
+scale = 0.5,0.5
+bindtime = -1
+removetime = 50
+supermove = 1
+
+
+
+
+
+
+[State 0]
+type = Explod
+trigger1 = animelem = 5
+anim = 16005     ; AURA GARANDA
+pos = 2,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+sprpriority = 5
+scale = 0.6,0.6
+ownpal = 1
+supermove = 1
+
+[state 0]
+type = envshake
+trigger1 = animelem = 2
+ampl = 2
+time = 80
+
+[state 0]
+type = playsnd
+trigger1 = animelemtime(2) = 5
+value = S0,43
+
+[state 0]
+type = playsnd
+trigger1 = animelem = 2
+value = S0,7
+
+[state 0]
+type = playsnd
+trigger1 = animelem = 3
+value = S0,6
+
+[state 0]
+type = playsnd
+trigger1 = animelem = 5
+value = S0,8
+
+[state 0]
+type = playsnd
+trigger1 = animelem = 5
+value = S0,9
+
+[state 0]
+type = varset
+trigger1 = animtime = 0
+v = 7
+value = 1
+
+[state 0]
+type = lifeadd
+trigger1 = animelem = 3
+value = 50
+
+[state 0]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+;-------------------------------------------------------------
+;Turn Normal
+[statedef 7001]
+type = S
+ctrl = 0
+anim = 194
+poweradd = -0
+velset = 0,0
+movetype = I
+physics = S
+sprpriority = 2
+
+[State 3001, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S24,24
+
+[State 0, EnvColor]
+type = EnvColor
+trigger1 = animelem = 2
+value = 255,255,255
+time = 4
+
+[State 3001, Explod]
+type = Explod
+trigger1 = animelem = 2
+anim = 1034
+ID = 1034
+pos = -2,-5
+postype = p1
+sprpriority = 2
+ownpal = 1
+removeongethit = 1
+pausemovetime=999
+scale = 1,1
+
+
+
+[state 3001]
+type = varset
+trigger1 = time = 0
+v = 7
+value = 0
+
+[State 3001, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;------------------------------------------------------------------------

@@ -1,0 +1,46 @@
+Ultimate Bu -- Version 1.0 by Sniper85
+
+E-mail: thesniper_85@hotmail.com
+Website: www.freewebs.com/s85ms 
+
+Ok now if you're a newbie in mugen or just a char-collector you should be very happy cuz this is 
+the only Ultimate Bu available for now.I'm sure someone else will do a much better Bu for mugen but anyway....if you
+are an expert mugen creator you will probably say that this char is a total crap.Well, say whatever you like =) but since I'm a newbie in creating chars I do 
+not expect my first char to be good.  
+Actually I used this to learn more about the cns & cmd files ('practice' in other words), anyway....here is the move list: 
+
+===>Kamehameha (technique of Mystic Gohan) ~~~~~~  D, F, y
+===>Makankosappo (technique of Piccolo) ~~~~~~  D, F, x
+===>Super Ghost Kamikaze Attack (technique of Gotenks) ~~~~~~  D, DF, F, z
+===>Extensive Punch ~~~~~ z
+===>Ki Blast ~~~~~ s
+===>Kick combo ~~~~~ D, B, b
+===>Zanzoken ~~~~~ b+y
+
+Known Bugs:
+
+* Sprites suck (I finished these about 4 months ago but I was too lazy to do a whole new sprite sheet.
+* Some of the sound efx are in italian...yeah sorry for this but I have only italian episodes for now.I prefer japanese ones but.. -_-
+* The Ghost kamikaze attack move is kinda bad.I mean it's very simple to avoid the ghost by jumping over it....I was going to add a sort of
+multiple attack were one could have decided weather to put 1,2 or 3 ghosts at a time, thus making the move more dangerous for the enemy....it will 
+probably come out in the next version.
+
+
+New stuff in the version 2.0:
+
+* Better sound efx.
+* Better sprites.
+* More physical moves & a new ghost kamikaze attack.
+
+
+Special 'Thanks' Section (very typical one since everybody does it ^_^ )
+
+=====> To Elecbyte, MCM, SoundsGood & MEE.
+=====> To Pextin for lots of tips and suggestions.He helped me solving some of the problems I couldn't fix....oh yeah he tested this char too :) (thanks man!)
+=====> To you, for reading this file :)
+
+At the moment I'm planning to finish a couple of stages and continue a bit the other projects, so for now, I won't work on this....but I'll improve this Ultimate Bu for sure.When? I don't know... :)
+
+
+ 
+ 

@@ -1,0 +1,39 @@
+GOTENKS MOVESET
+
+------------------------
+Special moves:
+------------------------
+Energy Balls (can in air): D,DF,F + WP or HP (use 100 spirit)
+
+Funny Uppercut: F, D, DF + WP or HP
+
+Spiral Blow: D, DB, B + WP or HP
+
+Final Cannon: (When Close) F, B, F + WP or HP
+
+Galactic Donut (can in air): B,DB, D + WP or HP
+
+Dynamite Headbutt (can in air): D, DF, F + WK or HK
+
+Combo Kick: D, DB, B + WK or HK
+
+------------------------
+Special Techniques:
+------------------------
+Energy Charge: HP + HK (hold down)
+
+High Speed Dodge: WP + WK or B + WP + WK (vulnerable to throws)
+
+Easy Win!: (during stand/crouch guard) WP + WK (Lv1 Hyper)
+
+
+------------------------
+Super moves:
+------------------------
+Cho-Kamehameha: D, DF, F, D, DF, F + HP (Lv1 Hyper)
+
+Dynamite Missiles (only in air): D, DF, F, D, DF, F + HP (Lv1 Hyper)
+
+Super Ghost Kamikaze Attack!: D, DF, F, D, DF, F + HK (Lv2 Hyper)
+
+Super Buu Buu Volleyball Attack!: D, DB, B, F + HK (Lv3 Hyper)

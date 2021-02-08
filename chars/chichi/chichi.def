@@ -1,0 +1,15 @@
+;www.heroijapa.cjb.net www.mugendoom.cjb.net
+;www.templomugen.cjb.net www.mugenow.cjb.net  (acho q cabo)
+
+[Info]
+name        = "Chichi by heroijapa and W1ll_Smith"
+DisplayName = "Milk"
+
+[Files]
+cmd      = chichi.cmd
+cns      = chichi.cns
+st       = chichi.cns
+stcommon = common1.cns
+sprite   = chichi.sff
+anim     = chichi.air
+sound    = chichi.snd

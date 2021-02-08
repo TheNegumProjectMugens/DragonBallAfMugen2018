@@ -1,0 +1,31 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Turles GZ- V1.0 by zero liger"
+displayname = "Turles SSJ"
+versiondate = 04/11/2008
+mugenversion = 06,14,2003
+author = "GZ- TEAM"
+pal.defaults = 1,2
+
+[Files]
+sprite = Turles.sff
+anim = Turles.air
+sound = Turles.snd
+cmd = Turles.cmd
+cns = Turles.cns
+stcommon = common1.cns
+st = Turles.cns
+st1 = Modo_Vuelo-Fly.cns
+st2 = especiales.cns
+st3 = Combos_Automatic.cns
+st4 = IA.cns
+pal1 = pallete\Turles.act
+pal2 = pallete\Turles.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = ..\data\final.def

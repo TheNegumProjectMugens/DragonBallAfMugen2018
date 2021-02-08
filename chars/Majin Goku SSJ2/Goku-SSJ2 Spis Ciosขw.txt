@@ -1,0 +1,80 @@
+----------------------------------------------------------------------------------------------------
+Goku-SSJ2 By Gangsti Beta 0.7 Kombinacje klawiszowe/Ruchy... =]
+----------------------------------------------------------------------------------------------------
+
+[klawisze akcji]
+a = a
+b = b
+c = c
+x = x
+y = y
+z = z
+
+[klawisze ruchu]
+U - Góra
+D - Dó³
+F - przód
+B - ty³
+
+[dodatkowe]
+"/" znaczek ten bêdzie oznacza³, ¿e mo¿na kontynuowaæ atak i wykonaæ combo. 
+"*" Tylko kiedy trafi przeciwnika...
+"Air" Tylko w powietrzu
+"Run" Tylko w biegu
+
+Przyk³ad
+-[Run] x+y /*, x+y  - w biegu nacisn¹æ x+y mo¿na kontynuowaæ kiedy p1 trafi p2 naciskaj¹c x+y
+
+----------------------------------------------------------------------------------------------------
+NORMALNE ATAKI-
+
+[atak piêœciami]
+-a /*, a.
+
+[combo b]
+-b /*, b /*, b /*, b /*.   
+
+[fire ball'e]
+-c /*, c.
+
+[kopy 1]
+-x /*, x.
+-[Air] D,F,x
+
+[kopy 2]
+-y /*, y.
+
+[Teleport]
+-z - do przeciwnika
+-z + F - do przodu
+-z + B - do tylu
+
+
+SPECJALNE COMBA-
+
+[combo a]
+-[Run] a /*, a /*, a /*, a /*, a.  
+-D,F,a /*, a /*, a /*, a /*, a /*, a. 
+-D,F,x /*, x.
+-D,F,y /*, y.
+-[Run] x+y /*, x+y
+-[Air] D,F,y
+
+
+SPECJALNE ATAKI-
+
+[Odepchniecie KI w dwie strony]
+-D,B,F,a
+
+[Du¿y Ki Ball]
+-D,B,F,b
+
+[Kameha]
+D,B,F,c
+
+[Kameha SSJ3]
+D,F,D,B,c
+
+----------------------------------------------------------------------------------------------------
+
+Sory za polsko/angielskie po³¹czenie, nie pasuje mi nazwa ogniste kule albo du¿a kula energii... xd

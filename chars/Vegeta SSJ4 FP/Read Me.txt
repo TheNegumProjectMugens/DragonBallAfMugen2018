@@ -1,0 +1,7 @@
+Name: Vegeta SSJ4 v1.0
+Mugen version: 1.0
+
+Vegeta sprite sheet by VEG
+
+sprite and sound effects:
+Roken, MFT, TOPS, Gangsti, Benhazard

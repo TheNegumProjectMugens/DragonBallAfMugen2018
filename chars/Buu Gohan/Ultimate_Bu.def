@@ -1,0 +1,21 @@
+[Info]
+name = "Ultimate Bu by Sniper85"
+displayname = "Ultimate Bu"
+versiondate = 05,07,1752
+mugenversion = 07,31,2000
+author = "Sniper85"
+pal.defaults = 6,3,4,2
+
+[Files]
+cmd      = ultimate_bu.cmd
+cns      = ultimate_bu.cns
+st       = ultimate_bu.cns
+st2      = basicmoves.cns
+st3      = specialmoves.cns
+st4      = supermoves.cns
+stcommon = common.cns
+sprite   = ultimate_bu.sff
+anim     = ultimate_bu.air
+sound    = ultimate_bu.snd
+pal1     = ultimate_bu2.act
+pal2     = ultimate_bu.act

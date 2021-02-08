@@ -1,0 +1,21 @@
+[Info]
+Name="Gogeta Super Saiyan 3"
+DisplayName="Gogeta SSJ3" 
+Author="Son Gohan SSJ4"
+VersionDate=
+MugenVersion=14,04,2001
+Pal.Defaults=
+
+[Files]
+cmd=gogetassj3.cmd
+cns=gogetassj3.cns
+st=gogetassj3.cns
+stcommon=common1.cns
+sprite=gogetassj3.sff
+anim=gogetassj3.air
+sound=gogetassj3.snd
+pal1=original.act
+pal2=blue.act
+[Arcade]
+intro.storyboard=
+ending.storyboard=

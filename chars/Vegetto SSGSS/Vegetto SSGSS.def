@@ -1,0 +1,49 @@
+
+;Code: EGC
+;Sprites: Dark Angel
+
+;Thanks You: Wasaby, Dark Angel, Tapion, Emiliano 02, The Heartbreaker, G.o.D, Jos, MugenGod, Mephistopheles, Sawady, Cerbantes, Roken.
+
+;NOT EDIT/REMAKE THIS CHAR WITHOUT PERMISSION OF MFT.
+
+;Contact: http://mugengenerations.foroactivo.info/u3475contact
+
+[Info]
+name = "MFT Super Vegetto"
+displayname = "Super Vegetto SSGSS"
+versiondate = 2/1/2014; (2.0)
+mugenversion =  04,14,2002; 1.0; 1.1; (1.2 xD)
+pal.defaults = 4,2,3,1,5,
+author = "Wasaby & Midnight Fighters Team & EGC"
+
+[Files]
+sprite = VegettoSFF.sff
+anim = VegettoAIR.air
+sound = VegettoSND.snd
+cmd = VegettoCMD.cmd
+cns = VegettoCNS.cns
+stcommon = common1.cns
+st = VegettoCNS.cns
+st1 = basic.cns
+st2 = specials.cns
+st3 = supers.cns
+st4 = hypers.cns
+st5 = helpers.cns
+;SSJ-----------------------------
+pal1  = normal.act
+pal2  = normal.act
+pal3  = normal.act
+pal4  = normal.act
+pal5  = normal.act
+pal6  = normal.act
+;Normal---------------------------
+pal7  = ssj.act
+pal8  = ssj.act
+pal9  = ssj.act
+pal10 = ssj.act
+pal11 = ssj.act
+pal12 = ssj.act
+
+[Arcade]
+;intro.storyboard = 
+;ending.storyboard = 

@@ -1,0 +1,45 @@
+;==============
+;Super_Vegetto
+;==============
+;=============================================================
+
+;---------------------
+;Character Information
+;---------------------
+[Info]
+name = "Super Vegetto"   
+displayname = "Super4 Vegetto" 
+mugenversion    = 4/4/14
+author          = "sheld"        
+pal1            = Super_Vegetto.act
+
+
+;---------------------
+;Character Files
+;---------------------
+;---------------------
+;Command Set
+;---------------------
+cmd     = CMD.cmd
+
+;---------------------
+;State Files
+;---------------------
+[Files]
+cns             = CNS.cns
+st              = Basic.st              
+st1             = Super.st
+cmd             = CMD.cmd
+stcommon        = common1.cns
+
+;---------------------
+;Sprite/Sound
+;---------------------
+sprite  = Sprite.sff
+anim    = Air.air
+sound   = Sound.snd
+
+;Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+ending.storyboard = ending.def

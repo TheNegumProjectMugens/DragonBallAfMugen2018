@@ -1,0 +1,30 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Abo"
+displayname ="Abo"
+versiondate = 
+mugenversion = 
+author ="Hermoduro"
+pal.defaults =1
+
+[Files]
+sprite =abo.sff
+anim =abo.air
+sound =abo.snd
+cmd =abo.cmd
+cns =abo.cns
+stcommon =common1.cns
+st =abo.cns
+pal1=abo.act
+st1=attack.cns
+st2=special.cns
+st3=hyper.cns
+st4=AI.cns
+
+[Arcade]
+intro.storyboard =
+ending.storyboard =

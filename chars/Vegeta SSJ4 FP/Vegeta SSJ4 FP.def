@@ -1,0 +1,21 @@
+[Info]
+name ="Vegeta SSJ4"
+displayname ="Vegeta SSJ4 FullPower"
+versiondate =2015.06.29
+mugenversion =1.0
+author ="LegendTTA"
+pal.defaults =1
+
+[Files]
+cmd     =Vegeta.cmd
+cns     =Vegeta.cns
+st      =Vegeta.cns
+stcommon =common1.cns
+sprite  =Vegeta.sff
+anim    =Vegeta.air
+sound   =Vegeta.snd
+pal1=1.act
+st1=others.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard=

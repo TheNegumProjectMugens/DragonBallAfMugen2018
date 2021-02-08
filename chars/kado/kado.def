@@ -1,0 +1,30 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;******************http://www.youtube.com/user/gringopochotpch13    
+;***************************************************************************;
+
+[Info]
+name ="Kado"
+displayname ="Kado"
+versiondate = 
+mugenversion = 
+author ="Hermoduro"
+pal.defaults =1
+
+[Files]
+sprite =kado.sff
+anim =kado.air
+sound =kado.snd
+cmd =kado.cmd
+cns =kado.cns
+stcommon =common1.cns
+st =kado.cns
+pal1=kado.act
+st1=attack.cns
+st2=special.cns
+st3=hyper.cns
+st4=AI.cns
+
+[Arcade]
+intro.storyboard =
+ending.storyboard =

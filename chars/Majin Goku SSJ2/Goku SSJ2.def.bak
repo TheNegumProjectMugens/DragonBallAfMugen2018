@@ -1,0 +1,27 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************     http://virtualltek.mgbr.net     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Goku SSJ2"
+displayname ="Goku SSJ2"
+versiondate =06.06.2011
+mugenversion =1.0 
+author ="Gangsti Edit Jordanmaster"
+pal.defaults =1
+
+[Files]
+sprite =Goku-SSJ2.sff
+anim =Goku-SSJ2.air
+sound =Goku-SSJ2.snd
+cmd =Goku-SSJ2.cmd
+cns =Goku-SSJ2.cns
+stcommon =common1.cns
+st =Goku-SSJ2.cns
+pal1=1.act
+st1=Basic.cns
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

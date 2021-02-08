@@ -1,0 +1,30 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Goku"
+displayname ="broku"
+versiondate =09,03,2008
+mugenversion =04,14,2002
+author ="DGZ"
+pal.defaults =1,2
+
+[Files]
+sprite =gokuleg.sff
+anim =gokuleg.air
+sound =gokuleg.snd
+cmd =gokuleg.cmd
+cns =gokuleg.cns
+stcommon =common1.cns
+st =Basico.cns
+pal1=gokuleg.act
+pal2=gokuleg2.act
+st1=Helpers.cns
+st2=Moves.cns
+st3=Specials.cns
+
+[Arcade]
+intro.storyboard =intro.def
+ending.storyboard =..\data\final.def

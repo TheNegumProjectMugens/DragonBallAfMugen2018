@@ -1,0 +1,602 @@
+;KI Blast
+
+[Statedef 1000]
+type    = S
+movetype= A
+physics = S
+poweradd= -100
+ctrl = 0
+anim = 1000
+sprpriority = 0
+velset = 0,0
+
+[State 1000, 3]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 8, 8 
+
+[State 1000, 4]
+type = Projectile
+trigger1 = animelem = 2
+ProjAnim = 10002
+ProjHitAnim = 2007
+ProjRemAnim = 2007
+offset = 37, -53
+velocity = 5.5, 0
+accel = 0, 0
+attr = S, SP
+damage    = 62,4
+animtype  = Medium
+getpower  = 50
+givepower = 30
+guardflag = MA
+pausetime = 0,12
+sparkno = -1
+hitsound   = 5,3
+guardsound = 6,0
+guard.sparkno = -1
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 20
+ground.velocity = -8
+airguard.velocity = -3.5,-2.75
+air.type = Low
+air.velocity = -2.5,-5.5
+air.juggle = 3
+
+[State 2000,Voa]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 2000
+
+[State 1000, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; SGKA (def)
+[Statedef 1503]
+type    = S
+movetype= A
+physics = S
+anim = 1503
+velset = 0,0
+ctrl = 0
+
+[State 1503, 1]
+type = ChangeState
+trigger1 = Time = [0,15]
+trigger1 = Command != "holdz"
+value = 1501
+
+[State 1503, 2]
+type = ChangeState
+trigger1 = Time = [16,30]
+trigger1 = Command != "holdz"
+value = 1500
+
+[State 1503, 3]
+type = ChangeState
+trigger1 = AnimTime = 31
+value = 1502
+
+;---------------------------------------------------------------------------
+;Ghost Kamikaze Attack (1 ghost)
+[Statedef 1501]
+type    = S
+movetype= A
+physics = S
+velset = 0,0
+anim = 1501
+ctrl = 0
+
+[State 1501,Som]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = 11,1 
+
+[State 1501, 3]
+type = SuperPause
+trigger1 = AnimElem = 14
+pos = -8, -35
+time = 200
+
+[State 1501,Som]
+type = PlaySnd
+trigger1 = AnimElem = 14
+value = 3,1 
+
+
+
+[State 1501, 1]
+type = Projectile
+trigger1 = AnimElem = 15
+projanim = 1008
+ProjHitAnim = 2006
+velocity = 1.8
+offset = 28,-47
+attr = S, SP
+animtype  = Hard
+damage    = 300
+getpower  = 80
+sparkno = -1
+sparkxy = 12,-35
+priority  = 6
+guardflag = MA
+pausetime = 45,15
+hitsound   = 5,3
+guardsound = 6,0
+guard.sparkno = -1
+ground.type = high
+ground.slidetime = 40
+ground.hittime  = 40
+ground.velocity = -10
+air.velocity = -10,-10
+air.juggle = 5
+fall.animtype = Hard
+fall = 1
+
+[State 2000,Voa]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 2000
+
+[State 1501,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Ghost Kamikaze Attack (2 ghosts) --- not available
+[Statedef 1500]
+type    = S
+movetype= A
+physics = S
+velset = 0,0
+anim = 1500
+ctrl = 0
+
+[State 1501, 3]
+type = SuperPause
+trigger1 = AnimElem = 13
+pos = -8, -35
+time = 200
+
+[State 1500,Som]
+type = PlaySnd
+trigger1 = AnimElem = 13
+value = 3,1 
+
+
+
+[State 1500, 1]
+type = Projectile
+trigger1 = AnimElem = 14
+projanim = 1007
+ProjHitAnim = 2007
+velocity = 1.8
+offset = 28,-47
+attr = S, SP
+animtype  = Hard
+damage    = 200
+getpower  = 80
+sparkno = -1
+sparkxy = 12,-35
+priority  = 6
+guardflag = MA
+pausetime = 45,15
+hitsound   = 5,4
+guardsound = 6,0
+guard.sparkno = -1
+ground.type = high
+ground.slidetime = 40
+ground.hittime  = 40
+ground.velocity = -10
+air.velocity = -10,-10
+air.juggle = 5
+fall.animtype = Hard
+fall = 1
+
+[State 2000,Voa]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 2000
+
+[State 1500,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Ghost Kamikaze Attack (3 ghosts) --- not available
+[Statedef 1502]
+type    = S
+movetype= A
+physics = S
+velset = 0,0
+anim = 1500
+ctrl = 0
+
+[State 1501, 3]
+type = SuperPause
+trigger1 = AnimElem = 13
+pos = -8, -35
+time = 200
+
+[State 1502,Som]
+type = PlaySnd
+trigger1 = AnimElem = 13
+value = 3,1 
+
+
+
+[State 1502, 1]
+type = Projectile
+trigger1 = AnimElem = 14
+projanim = 1004
+ProjHitAnim = 2007
+velocity = 1.8
+offset = 28,-47
+attr = S, SP
+animtype  = Hard
+damage    = 200
+getpower  = 80
+sparkno = -1
+sparkxy = 12,-35
+priority  = 6
+guardflag = MA
+pausetime = 45,15
+hitsound   = 5,4
+guardsound = 6,0
+guard.sparkno = -1
+ground.type = high
+ground.slidetime = 40
+ground.hittime  = 40
+ground.velocity = -10
+air.velocity = -10,-10
+air.juggle = 5
+fall.animtype = Hard
+fall = 1
+
+[State 2000,Voa]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 2000
+
+[State 1502,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------
+;fly
+[Statedef 2000]
+type = A
+ctrl = 0
+anim = 2005
+velset = 0,0
+
+[State 2005,Para]
+type = VelSet
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = Var(2) = 0
+trigger2 = Pos Y < -200
+x = 0
+y = 0
+
+[State 2005, Para2]
+type = ChangeAnim
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = Anim != 2005
+value = 2005
+
+[State 2000,Var(1)]
+type = VarSet
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = Var(2) != 2
+trigger2 = Var(2) = 2
+trigger2 = Vel Y >= 2.4
+v = 3
+value = 1
+
+[State 2000,Var(2)]
+type = VarSet
+trigger1 = Var(2) = 1
+trigger1 = Vel Y <= -2.4
+v = 3
+value = 2
+
+[State 2000,Up]
+type = VelAdd
+trigger1 = Var(2) = 1
+y = -0.2
+
+[State 2000,Down]
+type = VelAdd
+trigger1 = Var(2) = 2
+y = 0.2
+
+[State 2000,End]
+type = VelSet
+triggerall = Var(2) != 0
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+trigger3 = command = "holdup"
+trigger4 = command = "holddown"
+y = 0
+
+[State 2000,EndVar]
+type = VarSet
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+trigger3 = command = "holdup"
+trigger4 = command = "holddown"
+v = 3
+value = 1
+
+[State 2000, GoUp1]
+type = VelAdd
+trigger1 = command = "holdup"
+y = -0.2
+
+[State 2000,GoUp2]
+type = VelSet
+trigger1 = command = "holdup"
+trigger1 = Vel Y > 0 
+y = 0
+
+[State 2000, GoUpAnim]
+type = ChangeAnim
+trigger1 = Anim != 3011
+trigger1 = command = "holdup"
+value = 2003
+
+[State 2000, GoDown1]
+type = VelAdd
+trigger1 = command = "holddown"
+y = 0.2
+
+[State 2000,GoDown2]
+type = VelSet
+trigger1 = command = "holddown"
+trigger1 = Vel Y < 0 
+y = 0
+
+[State 2000, GoDownAnim]
+type = ChangeAnim
+trigger1 = Anim != 3111
+trigger1 = command = "holddown"
+value = 2004
+
+[State 2000, GoBack1]
+type = VelAdd
+trigger1 = command = "holdback"
+x = -0.1
+
+[State 2000,GoBack2]
+type = VelSet
+trigger1 = command = "holdback"
+trigger1 = Vel X > 0 
+x = 0
+
+[State 2000, GoBackAnim]
+type = ChangeAnim
+triggerall = Anim != 3113
+trigger1 = command = "holdback"
+value = 2002
+
+[State 2000, GoFwd1]
+type = VelAdd
+trigger1 = command = "holdfwd"
+x = 0.2
+
+[State 2000, GoFwd2]
+type = VelSet
+trigger1 = command = "holdfwd"
+trigger1 = Vel X < 0 
+x = 0
+
+[State 2000, GoFwdAnim]
+type = ChangeAnim
+trigger1 = Anim != 3112
+trigger1 = command = "holdfwd"
+value = 2001
+
+[State 2000,Turn]
+type = Turn
+trigger1 = P2bodydist X < -29
+
+[State 2000,Borda]
+type = PosSet
+trigger1 = Pos Y < -175
+y = -175
+
+[State 2001,Land]
+type = ChangeState
+trigger1 = Pos Y >= 0
+value = 50
+ctrl = 1
+
+[State 2000,End]
+type = PlaySnd
+trigger1 = time = 2
+value = 9, 0 
+
+[State 2000,End]
+type = ChangeState
+trigger1 = Time > 2
+trigger1 = command = "fly"
+value = 50
+ctrl = 1
+
+[State 2000,Win-Lose]
+type = ChangeState
+trigger1 = Win = 1
+trigger2 = Lose = 1
+value = 50
+
+;---------------------------------------------------------------------------
+;Kamehameha
+
+[Statedef 5656]
+type = S
+movetype = A
+physics = S
+poweradd = -1000
+ctrl = 0
+anim = 5656
+sprpriority = 0
+velset = 0,0,0
+
+[State 5656, 1]
+type = PlaySnd
+trigger1 = animelem = 6
+value = 4, 4 
+
+[State 5656, 4]
+type = PlaySnd
+trigger1 = time = 105
+value = 5, 3 
+
+[State 5656, 3]
+type = SuperPause
+trigger1 = AnimElem = 6
+pos = -8, -35
+time = 225
+
+[State 5656, 4]
+type = Projectile
+trigger1 = animelem = 7
+projanim = 10005
+ProjHitAnim = 3006
+offset = 0, 0
+velocity = 0, 0
+projremovetime = 80
+projhits = 10
+projpriority = 9999
+projmisstime = 5
+attr = S, HP
+damage    = 20,4
+animtype  = Hard
+numhits = 1
+getpower  = 5
+givepower = 25
+guardflag = MA
+pausetime = 2,15
+hitsound   = 5,3
+guardsound = 6,0
+guard.sparkno = -1
+ground.type = high
+ground.slidetime = 4
+ground.velocity = -50,-1
+airguard.velocity = -50,0
+air.type = Low
+air.velocity = -50,1
+air.juggle = 5
+fall.animtype = Hard
+fall = 1
+palfx.time = 15
+palfx.add = 32,0,0
+palfx.mul = 300,192,192
+
+[State 5656, 5]
+type = ChangeState
+trigger1 = animTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+
+; Makankosappo
+[Statedef 1800]
+type    = S
+movetype= A
+physics = S
+poweradd= -1000
+ctrl = 0
+anim = 1800
+sprpriority = 0
+velset = 0,0,0
+
+[State 1800, 2]
+type = SuperPause
+trigger1 = time = 0
+pos = -8, -35
+
+[State 1800, 6]
+type = PlaySnd
+trigger1 = time = 45
+value = 10,0
+
+[State 1800, 7]
+type = PlaySnd
+trigger1 = time = 145
+value = 5,3
+
+[State 1800, 7]
+type = Projectile
+trigger1 = time = 49
+ProjHitAnim = 3006
+projanim = 1016
+projremanim = 1016
+offset = 0, 0
+velocity = 0, 0
+projremovetime = 130
+projhits = 15
+projpriority = 9999
+projmisstime = 5
+attr = S, HP
+damage    = 15,4
+animtype  = Hard
+numhits = 1
+getpower  = 5
+givepower = 15
+guardflag = MA
+pausetime = 2,15
+sparkno = -1
+hitspark = -1
+;hitsound   = 5,3
+guardsound = 6,0
+guard.sparkno = -1
+ground.type = high
+ground.slidetime = 4
+ground.velocity = -50,-1
+airguard.velocity = -50,0
+air.type = Low
+air.velocity = -50,1
+air.juggle = 5
+fall.animtype = Hard
+fall = 1
+palfx.time = 15
+palfx.add = 32,0,0
+palfx.mul = 300,192,192
+
+[State 2000,Voa]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 2000
+
+[State 1800, 9]
+type = ChangeState
+trigger1 = animTime = 0
+value = 0
+ctrl = 1
+
+

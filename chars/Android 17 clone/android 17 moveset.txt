@@ -1,0 +1,38 @@
+ANDROID 17 MOVESET
+
+------------------------
+Special moves:
+------------------------
+Power Blitz (can in air): D,DF,F + WP or HP (use 100 spirit)
+
+Power Blow: D, DF, F + WK or HK
+
+Power Expansion: D, DF, F + HK (during Power Blow)
+
+Double Kick: F, D, DF + WK or HK (can cancel a Flip Kick)
+
+Flip Kick (can in air): D, DB, B + WK or HK (can cancel a Devil Sword Kick)
+
+Devil Sword Kick: (during jump) D, DF, F + WK or HK
+
+Explosive Wave: B,DB,D + WP or HP (use 100 spirit)
+
+
+------------------------
+Special Techniques:
+------------------------
+Energy Charge: HP + HK (hold down)
+
+High Speed Dodge: WP + WK or B + WP + WK (vulnerable to throws)
+
+Time to play: (during stand/crouch guard) WP + WK (Lv1 Hyper)
+
+
+------------------------
+Super moves:
+------------------------
+Super Power Blitz (can in air): D, DF, F, D, DF, F + HP (Lv1 Hyper)
+
+Power Force Field (can in air): D, DF, F, D, DF, F + HK (Lv2 Hyper)
+
+Accel Combo: : D, DB, B, F + HK (Lv3 Hyper)

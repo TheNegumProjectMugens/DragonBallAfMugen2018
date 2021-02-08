@@ -1,0 +1,477 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<style>
+<!--
+.codmug      { font-family: Courier; font-size: 12pt; text-align: left; padding-left: 4; 
+               padding-right: 4; padding-top: 1; padding-bottom: 1; 
+               background-color: #C0C0C0 }
+-->
+</style>
+
+  <title>Goku Z2 by Balthazar & Cybaster - Tutorials</title>
+  <link href="css.css" type="text/css" rel="stylesheet">
+</head>
+<body leftmargin="0" topmargin="0" alink="#ff9933" bgcolor="#fdfdfd" link="#006699" marginheight="0" marginwidth="0" text="#000000" vlink="#5584aa">
+<a name="top"></a>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+  <tbody>
+
+
+
+    <tr>
+      <td>
+
+	
+	
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+          <tr>
+
+
+		<td align="center" background="images/typhoon-cr.jpg" height="24" width="100%">&nbsp; </td>
+
+
+	</tr>
+        </tbody>
+      </table>
+
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+
+
+	
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+          <tr>
+
+
+		<td align="center" background="images/typhoon-lr.jpg" height="24" width="100%"><basefont face="Verdana,serif" size="-1">
+		<b>Tutorials for compatibility with Goku Z2</b></td>
+
+
+	</tr>
+        </tbody>
+      </table>
+
+
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>
+
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="85%">
+  <tbody>
+
+    <tr>
+
+
+	<td><basefont face="Verdana,serif" size="2">
+</font>
+	
+      <p><font face="Verdana" size="2">
+
+	In this section, you will find various tutorials and explanations to add special features to some characters, in order to make your Goku Z2 experience even more enjoyable. Some tutorials require some spriting, others require coding knowledge, or even both, so it's up to you to put some effort understanding them.<br><br>
+	
+	The tutorials covered in this section are (rated with a difficulty from 1 to 5, 1 being very easy to 5 requiring very good coding knowledge):<br>
+	- Introduction with Megaman by DG <img src="images/star1.gif" border="0" height="16" width="16"><br>
+	- Flip Knockout <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star1.gif" border="0" height="16" width="16"><br>
+	- Broken Back <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star1.gif" border="0" height="16" width="16"><br>
+	- Chou Kamehameha Fatality <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star2.gif" border="0" height="16" width="16"><br>
+	- Dash Collision <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star2.gif" border="0" height="16" width="16"><br>
+	- Super Projectile Collision <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star2.gif" border="0" height="16" width="16"> <img src="images/star2.gif" border="0" height="16" width="16"> <img src="images/star3.gif" border="0" height="16" width="16"><br>
+	- Beam Collision <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star1.gif" border="0" height="16" width="16"> <img src="images/star2.gif" border="0" height="16" width="16"> <img src="images/star2.gif" border="0" height="16" width="16"> <img src="images/star3.gif" border="0" height="16" width="16"><br>
+	
+	<br><br>
+	
+	<b><i><font face="Arial" size="3">Introduction with Megaman by DG</font></i></b><br><br>
+	
+	This is pretty straight-forward. When fighting <a href="http://dg.smeenet.org">Megaman by DG</a>, Goku will always use the same intro to mimic him, with perfect synchronisation. However, at this point, Megaman will not necessarily use the correct intro. To fix this, all you need to do is open the file megaman.cns in Megaman's folder (its size is about 610kb), and search for the following code :<br>
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	; Introduction state decider<br>
+	[Statedef 190]<br>
+	type = S<br>
+	<br>
+	[State 190, 1]<br> 
+	type = VarRandom<br>
+	trigger1 = 1<br>
+	v = 3<br>
+	range = 1<br>
+	<br>
+	[State 190, 2]<br>
+	type = ChangeState<br>
+	trigger1 = Time = 0<br>
+	value = 191 + ifelse(var(3) = 1, 0 ,3)<br>
+	</td>
+  </tr>
+</table>
+	Once you've found it, just replace the code by the following code (new lines in red), and you're done:<br>
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	; Introduction state decider<br>
+	[Statedef 190]<br>
+	type = S<br>
+	<br>
+	[State 190, 1]<br> 
+	type = VarRandom<br>
+	trigger1 = 1<br>
+	v = 3<br>
+	range = 1<br>
+	<br><font color="red">
+	[State 190, 2]<br>
+	type = ChangeState<br>
+	trigger1 = Time = 0<br>
+	trigger1 = enemy,name = "Goku Z2" && enemy,authorname = "Balthazar & Cybaster"<br>
+	value = 191</font><br>
+	<br>
+	[State 190, 2]<br>
+	type = ChangeState<br>
+	trigger1 = Time = 0<br>
+	value = 191 + ifelse(var(3) = 1, 0 ,3)<br>
+	</td>
+	</tr>
+	</table>
+	
+	<br>
+	<b><i><font face="Arial" size="3">Flip Knockout</font></i></b><br><br>
+	
+	This animation is used when Goku hits his opponent with EX Snap Kick. The opponent flies through the screen while flipping. This animation is not a standard in fighting games, and Mugen creators usually put the opponent in a custom state and use AngleAdd to make the opponent spin/rotate.<br>
+	To make your character compatible with Goku Z2, you have to add at least 3 sprites of your character spinning around the Z axis, with alignment based on the feet, as shown in the following capture:<br>
+	<p align="center">
+	<img src="images/flip_gethit.png" border="0" height="128" width="434"> <img src="images/NewFlipKO.gif" border="0" height="159" width="174">
+	</p><br>
+	Once the sprites are in the SFF, create <b>Animation 5937</b> in the AIR file, which is the standard used for Goku Z2, and you're done. Just adding this animation will ensure that your character will use it when Goku hits him with EX Snap Kick.<br>
+	Note that for Goku, states 5100, 5101 and 5110 were overriden to make Goku bounce flip after hitting the ground, just to improve the visuals. You may want to look at Goku's code in override.cns if you wish to do the same, but it isn't required.<br><br>
+	On the other hand, you may also want Goku or any of your characters with Anim 5937 to use the Flip Knockout animation whenever possible. When sending the opponent in a custom state to make him rotate with AngleAdd, you may just want to check if the opponent has the Flip Knockout animation with SelfAnimExist(5937), and use it instead.<br><br>
+
+
+	<br>
+	<b><i><font face="Arial" size="3">Broken Back</font></i></b><br><br>
+
+	This animation is used when Goku grabs his opponent at the end of the Broken Back Kaiyoken follow-up. When falling on the Goku's hand, the opponent gets his back broken in an ackward position, accurate to the way Goku finished Nappa in Dragon Ball series.<br>
+	To make your character compatible with Goku Z2, you have to add just one sprite of your character with the back broken, with alignment based on the middle of the belt, as shown on the following picture:<br>
+	<p align="center">
+	<img src="images/brokenback.png" border="0" height="79" width="157"> <img src="images/BackBreaker.gif" border="0" height="185" width="153">
+	</p><br>
+	Goku has two sprites instead of one, just to have show some jiggling, but this is not required. Once you have added the sprite(s) to the SFF, create <b>Animation 5946</b> in the AIR file, which is the standard used for Goku Z2, and you're done. Just adding this animation will ensure that your character will use it when Goku hits him with Broken Back follow-up.<br>
+	Optionally, you can separate the background arm and leg of your character, and place it as <b>Animation 5947</b> in the AIR file, so that it appears behind Goku, for a more realistic display. Axis should be aligned with Animation 5946, as shown on the previous picture. Note that this background sprite is not required, it is just here to make things look better. However, if you decide to add it, please add this piece of code to your helpers states :<br>
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	; Broken Back - BG Arms + legs<br>
+	<br>
+	[Statedef 245947]<br>
+	type = S<br>
+	movetype = H<br>
+	physics = N<br>
+	velset = 0,0<br>
+	<br>
+	[State 2260, anim]<br>
+	type = ChangeAnim<br>
+	trigger1 = !time<br>
+	value = 5947<br>
+	<br>
+	[State 2260, bind]<br>
+	type = bindtoroot<br>
+	trigger1 = 1<br>
+	pos = 0,0<br>
+	<br>
+	[State 2260, muteki]<br>
+	type = NotHitBy<br>
+	trigger1 = 1<br>
+	value = SCA<br>
+	<br>
+	[State 2260, destroy]<br>
+	type = DestroySelf<br>
+	trigger1 = time = 120<br>
+	</td>
+	</tr>
+	</table>
+	<br><br>
+	
+	<br>
+	<b><i><font face="Arial" size="3">Chou Kamehameha Fatality</font></i></b><br><br>
+	
+	This animation is used when Goku kills his opponent with Chou Kamehameha. The opponent is freezed in a GetHit sprite, fades to black, and finally vanishes, reduced to ashes.<br>
+	To make your character compatible with Goku Z2, you need to select a GetHit sprite that will be used to create the fade animation. Turn this sprite to black, and simplify it more and more to make the character fade out through the animation. Once this is done, place the sprites in the SFF at the same axis as the base sprite, as shown on the following capture:
+	<p align="center">
+	<img src="images/fade.png" border="0" height="83" width="604">  <img src="images/BeamDeath.gif" border="0" height="119" width="188">
+	</p><br>
+	Once the sprites are in the SFF, create two animations : <b>Animation 5941</b> and <b>Animation 5942</b>. Animation 5942 is optional but will make the custom state look better.<br>
+	- Animation 5941 consists in the base colored sprite displayed for 30 ticks, then the black fading sprites (11 sprites in the case of Goku Z2), and finally an invisible sprite displayed indefinitely.<br>
+	- Animation 5942 consists in the base color sprite displayed 15 times, each frame for 2 ticks, using the ASD method within the AIR file to make it fade to black. Basically, this animation will be displayed as an explod over animation 5941, because PalFX won't trigger correctly during the pause occuring when the character dies.<br>
+	It is best to go check Goku's AIR file directly to set up these 2 animations efficiently, especially regarding the ASD method. Just adding these animations will ensure that your character will use it when Goku kills him with Chou Kamehameha.<br><br>
+	On the other hand, you may also want your characters with beams to be able to put Goku in this Fatality state. To do this, add this code just after the HitDef of the beam attack state:<br>
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	[State 3025, p2state - killed]<br>
+	type = targetstate<br>
+	trigger1 = movehit && numtarget<br>
+	trigger1 = target, AnimExist(5941)<br>
+	trigger1 = MatchOver && WinKO<br>
+	value = 5941<br>
+	ignorehitpause = 1	
+	</td>
+	</tr>
+	</table>
+	Then, search in Goku's files for <b>states 5941 and 5942</b> (in states/system.cns), and copy them in your character's files wherever you want. You will probably want to modify the code a little bit to blend with your beam better.<br><br>
+	
+	<br>
+	<b><i><font face="Arial" size="3">Dash Collision</font></i></b><br><br>
+	
+	This state is triggered when two compatible characters run into each other. They will then grab each other and struggle until one of them wins. To make your character compatible with Goku (and some other characters), you will need to modify/code several things:<br>
+	1- A Run (or at least a Dash) state as state 100.<br>
+	2- A struggling animation, which consists in a single sprite for Goku.<br>
+	3- The code for Dash Collision, with the struggling state. You need to have Var(30) free for this move.<br>
+	4- A few effects. You can use those from Goku and include them in your character, or come up with yours.<br>
+	<br>
+	1- Concerning the run state, you will need to add a ChangeState in it to go to the Dash Collision state if you're fighting compatible characters. Basically, just override the Run code and add this piece of code in it:<br>
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	; DASH COLLISION ACTIVATION<br>
+	[State -2, Dash Coll]<br>
+	type = Changestate<br>
+	triggerall = enemy,stateno=100 || enemy,stateno=950<br>
+	triggerall = p2bodydist X = [-30,30]<br>
+	trigger1 = enemy,selfanimexist(128950)
+	value = 950<br>	
+	</td>
+	</tr>
+	</table>
+	<br>
+	Finally, add a blank animation (128950) to your AIR file :
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	;Dash Collision check<br>
+	[Begin Action 128950]<br>
+	-1,0, 0,0, -1<br>
+	</td>
+	</tr>
+	</table>
+	<br><br>	
+	
+	2- Concerning the struggling sprites, you can do what you wish, just make the sure the hands stay at the same place and are located at a height of about 52 to 68 pixels. Please check Goku's struggling sprite (950,0 in the SFF) for reference. Then, place the sprite in the SFF (as shown in the following image) and create Animation 950:<br>
+	<p align="center">
+	<img src="images/dashcol.png" border="0" height="92" width="122">  <img src="images/dashcoldef.gif" border="0" height="91" width="164">
+	</p><br><br>
+	
+	3- Now you need to add the code releative to the Dash Collision state itself. Search for it in Goku's files : <b>state 950</b> in states/system.cns.<br>
+	Basically, the code displays various FX during the whole struggling (smoke, collision FX, white foreground, scaling, notification). Then, a set of PosAdd and width ensures both fighters get placed correctly. Several sounds and envshake occur. Then, the core of the code is there, in a nutshell: <b>var(30)</b> (which HAS to be free for your character) is set to 0, goes up as players smash buttons. After 80 ticks have passed, the character goes to a state depending on if his var(30) is higher than the opponent's or not:<br>
+	- If he wins, he goes to state 951. You will have to create this one yourself to define what your character does when he wins. You don't have to use state 951 if you don't want to.<br>
+	- If he loses, he goes to stance state with no control, waiting for the opponent to hit or throw him.<br>
+	- If there's a draw, he goes in backdash state.<br><br>
+	
+	4- Finally, it is also important you add the effects sprites in your character, since only teamside=1 will trigger them. The animation used in Goku are animations 955, 956, 957 and 958. There's also a notification helper in state 13200 (search in states/helpers.cns if you want to use it). Feel free to use all the FX from Goku for Dash Collision, or come up with yours if they don't blend well.<br><br>
+	
+	
+	
+	
+	<br>
+	<b><i><font face="Arial" size="3">Beam Collision</font></i></b><br><br>	
+	
+	<p align="center">
+	<img src="images/beamcollision.png" border="0" height="129" width="608">
+	</p><br>
+	
+	This state is triggered when one character is charging his beam, and the other character counters and starts charging his beam too, granted he has enough power and has control. Both characters will then release their beam at the same time, and players will have to smash buttons in order to decide the winner.<br>
+	This interaction involves a lot of coding and testing to ensure everything works correctly and all states are synchronised. The code cannot be put into a sort of template for everybody to use, and each stuff will have to be coded on a 1-on-1 basis. In this chapter, I will give you various pointers and explanations about how Goku's code works, and what you will need to add or modify.<br>
+	 P1 will refer to the first character charging his beam, while P2 will refer to the character who inputs the Counter command and activates the Beam Collision.<br><br>
+
+	<i><u>1 - Activating Beam Collision - P1 part :</u></i><br>
+	- You will have to modify the superpause part of the super, because the opponent won't be able to input the counter motion if he is in a superpause, as commands are not read during superpauses. For this, you just need to set up a variable in the charging state of the move, depending on who's the opponent and if he has control and such:<br>
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	[state 1315]<br>	
+	type = varset<br>	
+	trigger1 = !time<br>	
+	var(11) = 0<br>	
+	[state 1315]<br>	
+	type = varset<br>	
+	triggerall = numenemy<br>	
+	triggerall = (enemy,statetype != A)<br>	
+	triggerall = TeamMode = Single<br>	
+	triggerall = (enemy, ctrl) || (enemy, stateno=100) || (enemy, stateno=101)<br>	
+	triggerall = enemy,power >= 2000<br>	
+	trigger1 = enemy,name = "Goku Z2"<br>	
+	trigger1 = enemy,authorname = "Balthazar & Cybaster"<br>	
+	var(11) = 1<br>	
+	</td>
+	</tr>
+	</table>
+	Then, you just need to activate the superpause as usual, but adding var(11) or whatever variable you've used as trigger. Hence, if the opponent is compatible and can possibly do a Beam Counter, the SuperPause won't be triggered.<br>
+	Please note that the opponent's name (and optionally author name) are required, so please send me a PM or a mail if you want me to add the triggers to Goku Z2.<br><br>
+
+	<i><u>2 - Activating Beam Collision - P2 part :</u></i><br>
+	As you have seen, if P2 can possibly Beam Counter his opponent, the superpause is not activated. But obviously, you don't want P2 to be able to move and do what he wants during the usual superpause. To take care of this, you will have to add some code in state -2. You will basically need:<br>
+	- A CtrlSet set to 0, triggered by the opponent's charge state, to ensure P2 has no control during the time corresponding to the default superpause.<br>
+	- A CtrlSet set to 1, to give back control to P2 when the opponent finished the superpause part of his charge.<br>
+	- A PosFreeze with the same triggers, to ensure P2 can't change position and is freezed during the superpause.<br>
+	- A ChangeAnim with "value=anim" and "elem=animelemno(0)"to set P2's sprite to a static one.<br>
+	- A VarSet and ChangeState triggered by power, command and the opponent's state :<br>
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	[State -2]<br>
+	type = VarSet<br>
+	triggerall = numenemy<br>
+	triggerall = var(31) = 0<br>
+	triggerall = command = "f2p"<br>
+	triggerall = power >= 2000<br>
+	triggerall = P2Dist X > 80<br>
+	triggerall = anim = 0 || anim = 5 || anim = 6 || anim = 10 || anim = 11 || anim = 12 || anim = 20 || anim = 21 || anim = 100 || anim = 101<br>
+	trigger1 = enemy,name = "Goku Z2" && enemy,authorname = "Balthazar & Cybaster"<br>
+	trigger1 = (enemy,stateno=2400) && (enemy,anim=2400) && (enemy,animelemtime(4)>=0) && (enemy,var(26)=0)<br>
+	var(31) = 1<br>
+	<br>
+	[state 1315]<br>
+	type = ChangeState<br>
+	trigger1 = var(31)=1 && stateno!=2480<br>
+	value = 2480<br>
+	</td>
+	</tr>
+	</table>
+	As you can see, when the command is performed within the correct conditions, P2 is sent to state 2480. Of course, you don't need to use the same state numbers, but using them will enable easier compatibility check with other characters.<br><br>
+
+	<i><u>3 - Beam Counter Charge and launch :</u></i><br>
+	- P2 part : State 2480 (in Goku at least) is a simple copy of the normal beam charging state. Only thing differentiating it visually is the presence of a large super portrait scrolling behind him. Feel free to do whatever you want to make the super charge countering look good. When you reach the end of the animation, just put a changestate to the beam collision state, which HAS to be state 2481.<br>
+	- P1 part : Your character should have a ChangeState going to the beam launching state for normal conditions. Here, because of Beam Counter, you will have to add a few triggers to your ChangeState to block P1 into his charging state until P2 has finished charging, and you will need to add a ChargeState to state 2481 (the Beam Collision state) :<br>
+	<table border="1" cellspacing="1" width="65%" id="AutoNumber1">
+	<tr>
+    <td width="100%">
+    <p class="codmug"><b><font color="#FF0000">
+    </font></b>
+	;Throw Kmh when Beam Counter<br>
+	[State 901, ChangeAnim]<br>
+	type = ChangeState<br>
+	triggerall = Anim=2400<br>
+	trigger1 = enemy,name = "Goku Z2" && enemy,stateno=2481<br>
+	value = 2481<br>
+	ctrl = 0<br>
+	<br>
+	;Throw Kmh<br>
+	[State 901, ChangeAnim]<br>
+	type = ChangeState<br>
+	triggerall = blabla<br>
+	<font color="#FF0000">triggerall = (enemy,name != "Goku Z2") || (enemy,name = "Goku Z2" && enemy,stateno!=[2480,2481])</font><br>
+	trigger1 = (command != "hold_x") && (command != "hold_y") && (command != "hold_z")<br>
+	trigger2 = time >= 350<br>
+	value = 2401<br>
+	ctrl = 0<br>
+	</td>
+	</tr>
+	</table>
+	If you want your character to be compatible with Goku, you will thus need to add the Goku related trigger codes, but also send me your character's triggers and states for the ChangeStates.<br><br>
+
+	<i><u>4 - Beam Collision :</u></i><br>
+	Both characters should share the exact same code to ensure good compatibility and no "cheating". Basically, just copy-paste state 2481 from supers.cns to your character, and modify the explods so they blend with yours. Here's an explanation about the code :<br>
+	- Note that statedef doesn't specify any animation at first.<br>
+	- You can use Goku's Beam Collision notification helper if you wish, only teamside=1 will display it.<br>
+	- Various assertspecials to ensure there are no lifebars, background, foreground, and that the timer is freezed.<br>
+	- You change the animation ONLY when the opponent reaches the state too. This is just to fix a 1 tick offset.<br>
+	- Removing various explods from previous states. Modify according to your character.<br>
+	- Make the screen shake with envshake, scale the character to the correct value (by half) and position it on the screen.<br>
+	- Set the variable from state -2 back to zero.<br>
+	- Display various voices and explods for epic atmosphere!<br>
+	- Note that the beam is displayed with a scaling explod, which scale factor depends on the value of the smashing variable (here fvar(20)).<br>
+	- The center collision FX is coded as a helper, created by the player facing right, and will be displayed accordingly to the smashing variable.<br>
+	- The core of the code for struggling is then handled by <b>var(30)</b>, which needs to be free for your character. This variable is then scaled to [0,1] by reading the opponent's var(30) value, and is stored in fvar(20) in Goku Z2, but you can use another floating variable if you want. fvar(20)=0 means you're completely losing the fight, fvar(20)=0.5 means your var(30)=enemy,var(30) and fvar(20)=1 means you're beating the opponent by 20 smashes.<br>
+	- Finally, a changestate occurs depending on fvar(20) and time. If you beat the opponent by 20 smashes or more, you go to state 2485. Otherwise, if 5 seconds have passed and there's no winner, both characters will be sent to state 2489.<br><br>
+
+	<i><u>5 - Beam Collision ending :</u></i><br>
+	Please look at the coding in supers.cns to see what was done exactly for Goku. Basically, here the various states and what they're for :<br>
+	- 2485 : Goku wins the Beam Collision. He stays in the same animation, has his beam growing much bigger, displays hitsounds and hitsparks, and with a hitdef, sends the opponent in a custom state depending on his life.<br>
+	- 2486 : custom state in which Goku is sent when he loses Beam Collision, without being killed. He loses 350 life, has a hit scream and triggers a white Super BG.<br>
+	- 2487 : custom state in which Goku is sent when he loses Beam Collision, but being killed by it. This is basically a copy of the Chou Kamehameha Fatality state, but scaled down.<br>
+	- 2488 : temporary state for the winner just to remove all explods and do last moment stuff.<br>
+	- 2489 : state for when there's no winner for Beam Collision. The character keeps the same animation, but the center collision ball grows bigger (done through helper), and the white super BG appears. Characters then go to state 2490.<br>
+	- 2490 : remove various helpers and remove life depending on how much your var(30) is compared to the opponent's one. Then, send the character to state 5110 with a SelfState to finish things off.<br><br>
+	
+	
+	
+	
+	
+&nbsp;</font></p>
+      </td>
+    </tr>
+
+
+
+    <tr>
+      <td>
+	
+      <hr>
+      </td>
+    </tr>
+
+
+
+    <tr>
+      <td>
+
+	
+      <table align="center" border="0" cellpadding="0" cellspacing="0" width="650">
+        <tbody>
+          <tr>
+
+
+		<td align="center"><basefont face="Verdana,serif" size="-1">
+            <div class="techlinks">		<br>
+
+		created by
+        <strong>Balthazar & Cybaster</strong><br>
+        
+            <p>        
+        <br>
+
+	<br>
+
+            </p>
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

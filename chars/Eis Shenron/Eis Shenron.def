@@ -1,0 +1,37 @@
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||          SUB-ZERO DEF          ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Info]
+name="sub-zero by binho"
+displayname="SAN SHENRON"
+versiondate=11,26,2005
+mugenversion=04,14,2001
+author="Binho"
+pal.defaults=1,2,3,4,5,6,7
+
+[Files]
+sprite=Sub-Zero.sff
+sound=Sub-Zero.snd
+anim=Sub-Zero.air
+cmd=Sub-Zero.cmd
+cns=Sub-Zero.cns
+st=Sub-Zero.cns
+st1=especial.cns
+st2=supers.cns
+st3=fatality.cns
+stcommon=common.cns
+pal1=SubZero.act
+
+[Arcade]
+;intro.storyboard =
+;ending.storyboard=../chars/sub-zero/endings/mk1sub0.def;mk2
+ending.storyboard=../chars/sub-zero/endings/sub0end.def;mk1

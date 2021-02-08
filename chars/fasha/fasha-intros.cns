@@ -1,0 +1,128 @@
+
+;intro
+[Statedef 190]
+type = S
+ctrl = 0
+anim = 190
+velset = 0,0,0
+
+[State 190, begin]
+type = AssertSpecial
+trigger1 = time = [0,400]
+flag = intro
+
+[State 190, 1] ;If opponent is Mr.Satan
+type = ChangeState
+triggerall = Time = 0
+trigger1 = P2Name = "Mr.Satan"
+trigger2 = P4Name = "Mr.Satan"
+value = 191
+
+[State 3000,MBS]
+type = explod
+trigger1 = AnimElem = 1
+anim = 199
+facing = 1
+pos = 10,65
+postype = left
+sprpriority = 1;-2
+bindtime = 600
+ownpal = 1
+supermove = 1
+removetime = 600
+
+[State 400, 1]
+type = PlaySnd
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 5
+value = 190, 190
+
+[State 190, 3]
+type = changestate
+trigger1 = animtime = 100
+value = 0
+ctrl = 0
+
+
+;intro
+[Statedef 192]
+type = S
+ctrl = 0
+anim = 190
+velset = 0,0,0
+
+[State 192, begin]
+type = AssertSpecial
+trigger1 = time = [0,400]
+flag = intro
+
+[State 192, 1] ;If opponent is ChibiTrunks
+type = ChangeState
+triggerall = Time = 0
+trigger1 = P2Name = "C-Trunks by EmuBoarding"
+trigger2 = P4Name = "C-Trunks by EmuBoarding"
+value = 191
+
+[State 3000,MBS]
+type = explod
+trigger1 = AnimElem = 1
+anim = 199
+facing = 1
+pos = 10,65
+postype = left
+sprpriority = 1;-2
+bindtime = 600
+ownpal = 1
+supermove = 1
+removetime = 600
+
+[State 400, 1]
+type = PlaySnd
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 5
+value = 190, 190
+
+[State 192, 3]
+type = changestate
+trigger1 = animtime = 100
+value = 0
+ctrl = 0
+;----------------------------------------------------------
+
+;Mr.Satan
+[Statedef 191]
+type = S
+ctrl = 0
+anim = 198
+velset = 0,0,0
+
+[State 190, begin]
+type = AssertSpecial
+trigger1 = time = [0,500]
+flag = intro
+
+[State 3000,MBS]
+type = explod
+trigger1 = AnimElem = 1
+anim = 191
+facing = 1
+pos = 10,65
+postype = left
+sprpriority = 1;-2
+bindtime = 600
+ownpal = 1
+supermove = 1
+removetime = 600
+
+[State 400, 1]
+type = PlaySnd
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 5
+value = 190, 190
+
+[State 190, 3]
+type = changestate
+trigger1 = animtime = 999
+value = 0
+ctrl = 0
+;-----------------------------------------------------------

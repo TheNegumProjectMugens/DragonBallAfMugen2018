@@ -1,0 +1,708 @@
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||             SUPER CNS          ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+; SUPER FREEZE ---> OK
+; SUPER FREEZE AEREO ---> OK
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||           SUPER FREEZE         ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;(Lançando o Super freeze)
+
+[Statedef 3000]
+type = S
+movetype = A
+physics = N
+velset = 0,0
+ctrl = 0
+anim = 1050
+poweradd = -2000
+sprpriority = 2
+
+[State 3000, SP]
+type = SuperPause
+trigger1 = AnimElem = 2
+Time = 40
+Anim = -1
+
+[State 3000, Helper Invisivel]
+type = Helper
+trigger1 = AnimElem = 1
+helpertype = Normal
+ID = 7028
+name = "7028"
+postype = p1
+pos = 0,0
+stateno = 3004
+ownpal = 1
+keyctrl = 0
+supermovetime=400
+pausemovetime=400
+
+
+[State 3000, Helper Projetil]
+type = Helper
+trigger1 = AnimElem = 4
+helpertype = Normal
+ID = 3002
+name = "SuperFreeze"
+postype = p1
+pos = 60,-60
+stateno = 3002
+ownpal = 1
+keyctrl = 0
+supermovetime=400
+pausemovetime=400
+
+;--------------Super BG----------------
+
+[State 3000,SuperBG00] 
+type = Explod
+trigger1 = AnimElem = 1
+anim = 7016
+ownpal = 1
+pos = 0,0
+postype = back
+scale = 1.1,1.1
+supermove = 1
+facing = 1 
+bindtime = 700
+sprpriority = -9999
+removetime = 40
+removeongethit = 1
+ID = 5
+pausemovetime = 9999999
+
+; super sound
+[State 3000, snd]
+type = PlaySnd
+trigger1 = Time = 1
+value = F20,0
+volume = 255
+
+[State 3000,SuperBG] 
+type = Explod
+trigger1 = animelem=1
+anim = 7015
+supermovetime=400
+pausemovetime=400
+pos = -30,-10
+postype = back
+facing = 1 
+sprpriority = -3
+removeongethit = 1
+ID = 7015
+
+[State 3000,destry Explod]
+type=removeexplod
+trigger1=time>=30
+supermovetime=400
+pausemovetime=400
+ID=7015
+
+
+;-------------SBG Fim---------------
+
+[state 3000, Escurecer]
+type = BgPalFx
+trigger1 = AnimElem = 1
+add = 32,32,32
+mul = 64,64,64
+sinadd = -255,-255,-255,200
+time = 125
+
+[State 3000, cg]
+type=explod
+trigger1=Animelem=1
+anim=7025
+sprpriority=5
+postype=p1
+pos=7,-80
+removetime=49
+scale=0.5,0.5
+pausemovetime=300
+supermovetime=300
+
+[State 3000, Explod]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 7100
+ID=7100
+pos = 60,-60
+postype = P1
+removetime=-1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+[State 3000,destry Explod]
+type=removeexplod
+trigger1=time>=102
+
+[State 3000, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3003
+ctrl = 1
+
+;-------------------
+
+;( O Projetil )
+
+[Statedef 3002]
+type = A
+movetype = A
+poweradd = -50
+physics = N
+juggle = 0
+ctrl = 0
+anim = 7055
+sprpriority = 5
+Vel = 0,0
+
+[State 3002, 2]
+type = PlaySnd
+trigger1 = Time = 1
+value = 24,1
+
+; wind sound
+[State 3000, snd]
+type = PlaySnd
+trigger1 = Time = 2
+value = 13,1
+volume = 255
+abspan = 1
+
+[State 3002, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 3002, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+ignorehitpause = 1
+
+[State 3010, 2]
+type = HitDef
+trigger1 = Time %3 = 0 && Time <= 72
+attr = A, HP   
+damage = 6,1
+animtype = Heavy                 
+guardflag = MA                  
+hitflag = MAFD                  
+priority = 6 , Hit               
+sprpriority = 6
+pausetime = 0, 2
+sparkno = S7105
+guard.sparkno = -1
+sparkxy = -10,0
+;hitsound = S20, 0
+guardsound = 6, 0
+ground.type = Low               
+ground.slidetime = 57
+ground.hittime  = 20             
+ground.velocity = -5
+airguard.velocity = -1     
+air.type = Low                  
+air.velocity = -5, -1           
+air.hittime = 20
+palfx.time = 50
+fall = 1
+air.fall = 1
+fall.recover = 0
+palfx.add = 0,156,198
+palfx.mul = 13,179,199
+kill = !(root,var(58)) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+[State 3010, 3]
+type = HitDef
+trigger1 = Time = 73
+attr = A, HP                     
+damage = 50                
+animtype = Heavy                 
+guardflag = MA                  
+hitflag = MAFD                  
+priority = 7,Hit               
+sprpriority = 6
+pausetime = 0, 2 
+guard.sparkno = -1
+sparkno = -1                   
+sparkxy = 0, 0              
+;hitsound = S1, 10                  
+guardsound = 6, 0                
+ground.type = High               
+ground.slidetime = 50
+ground.hittime  = 20             
+ground.velocity = -26, -7
+airguard.velocity = -5
+air.type = High                  
+air.velocity = -28, -9           
+air.hittime = 20
+fall = 1
+air.fall = 1
+fall.recover = 0
+palfx.time = 50
+palfx.add = 0,156,198
+palfx.mul = 13,179,199
+kill = !(root,var(58)) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him  
+
+[State 6040, Fumaça gelada]
+type=explod
+trigger1=Movehit&&(P2stateno=[5000,5999])
+anim=7060
+ID=7060
+sprpriority=3
+postype=p2
+vel=-.2,-.75
+pos=(enemynear,const(size.mid.pos.x)),(enemynear,const(size.mid.pos.y))+10
+random=40,50
+removetime=-2
+ownpal=1
+removeongethit = 1
+supermovetime = -1
+bindtime = -1
+
+[State 3000, Bloco de gelo]
+type = Helper
+triggerall = NumHelper(7030)= 0 
+trigger1 = MoveHit&&time = 73
+helpertype = Normal
+ID = 3006
+name = "Boco de gelo"
+postype = p2
+pos=(enemynear,const(size.mid.pos.x)),(enemynear,const(size.mid.pos.y))+10
+stateno = 3006
+ownpal = 1
+keyctrl = 0
+supermovetime=400
+pausemovetime=400
+
+
+[State 3002, Destroy]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;--------------------------
+
+;( Terminando a animação de Lançar o projetil )
+
+[Statedef 3003]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 1001
+sprpriority = 5
+
+[State 3003, 2]
+type = ChangeState
+trigger1 = time = 12
+ctrl = 1
+value = 0
+
+
+;------helper Invisivel-------
+
+[Statedef 3004]
+type = S
+anim = 7028
+sprpriority = 7
+
+[State 190, Concentrando gelo]
+type=helper
+trigger1=time%7&&numhelper(191)<8
+helpertype=normal
+stateno=3005
+ID=191
+name="Power Particle"
+postype=p1
+pos=ceil(240-random/2.1),-ceil(random/4)
+size.yscale = .15
+supermovetime=400
+pausemovetime=400
+
+[State 9999, DestroySelf]
+type = DestroySelf
+trigger1 = Time >=50
+
+;-----helper particulas-------
+
+[Statedef 3005]
+type = S
+anim = 7020
+sprpriority = 7
+
+[State 191, vel]
+type=velset
+trigger1=!time
+x=(rootdist x-4)/60
+y=(rootdist y-55)/60
+
+[State 9999, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 9999, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;------Bloco de gelo-------
+
+[Statedef 3006]
+type = a
+movetype = i
+physics = N
+anim = 7028
+sprpriority = 99
+
+[State 0, ]
+type = Explod
+trigger1 = time =0
+anim = 7030
+ID = 7030
+pos = 0,-50
+postype = p2
+bindtime = -1
+sprpriority = 600
+ownpal = 1
+removetime = -1
+
+[State 0, ]
+type = RemoveExplod
+trigger1 = P2Stateno = 5100||Time =80
+ID = 7030
+
+[State 0, ]
+type = Explod
+triggerall = Numexplod(7031)=0
+trigger1 = P2Stateno = 5100||Time=80
+anim = 7031
+ID = 7031
+pos = 0,-50
+postype = p2
+bindtime = -1
+sprpriority = 600
+ownpal = 1
+removetime = -2
+
+[State 0, 0]
+type = RemoveExplod
+trigger1 = Time = 10
+ID = 7031
+
+[State 3000, snd]
+type = PlaySnd
+trigger1 = P2Stateno = 5100||Time=80
+value = 31,0
+
+[State -3, 0]
+type = EnvShake
+trigger1 = P2Stateno = 5100
+time = 2
+ampl = -5
+
+[State 9999, DestroySelf]
+type = DestroySelf
+trigger1 = P2Stateno = 5100||Time=80
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||        SUPER FREEZE AEREO      ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;(Lançando o Super freeze)
+
+[Statedef 3010]
+type = S
+movetype = A
+physics = N
+velset = 0,0
+ctrl = 0
+anim = 1055
+Poweradd = -1500
+sprpriority = 2
+
+[State 3000, SP]
+type = SuperPause
+trigger1 = AnimElem = 2
+Time = 40
+Anim = -1
+
+[State 3000, Helper Invisivel]
+type = Helper
+trigger1 = AnimElem = 1
+helpertype = Normal
+ID = 7028
+name = "7028"
+postype = p1
+pos = 0,0
+stateno = 3004
+ownpal = 1
+keyctrl = 0
+supermovetime=400
+pausemovetime=400
+
+[State 3010, Helper Projetil]
+type = Helper
+trigger1 = AnimElem = 4
+helpertype = Normal
+ID = 3012
+name = "SuperfreezeAereo"
+postype = p1
+pos = 49,-95
+stateno = 3012
+ownpal = 1
+keyctrl = 0
+
+;--------------Super BG----------------
+
+[State 3000,SuperBG00] 
+type = Explod
+trigger1 = AnimElem = 1
+anim = 7016
+ownpal = 1
+pos = 0,0
+postype = back
+scale = 1.1,1.1
+supermove = 1
+facing = 1 
+bindtime = 700
+sprpriority = -9999
+removetime = 40
+removeongethit = 1
+ID = 5
+pausemovetime = 9999999
+
+
+[State 3000,SuperBG] 
+type = Explod
+trigger1 = animelem=1
+anim = 7015
+supermovetime=400
+pausemovetime=400
+pos = -30,-10
+postype = back
+facing = 1 
+sprpriority = -3
+removeongethit = 1
+ID = 7015
+
+; super sound
+[State 3000, snd]
+type = PlaySnd
+trigger1 = Time = 1
+value = F20,0
+volume = 255
+
+[State 3000,destry Explod]
+type=removeexplod
+trigger1=time>=30
+supermovetime=400
+pausemovetime=400
+ID=7015
+
+
+;-------------SBG Fim---------------
+
+[state 3000, Escurecer]
+type = BgPalFx
+trigger1 = AnimElem = 1
+add = 32,32,32
+mul = 64,64,64
+sinadd = -255,-255,-255,200
+time = 125
+
+[State 3000, cg]
+type=explod
+trigger1=Animelem=1
+anim=7025
+sprpriority=5
+postype=p1
+pos=10,-95
+removetime=49
+scale=0.5,0.5
+pausemovetime=300
+supermovetime=300
+
+[State 3000, Explod]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 7100
+ID=7100
+pos = 60,-92
+postype = P1
+removetime=-1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+[State 3000,destry Explod]
+type=removeexplod
+trigger1=time>=102
+
+[State 3010, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;-------------------
+
+;( O Projetil )
+
+[Statedef 3012]
+type = S
+movetype = A
+poweradd = -50
+physics = N
+juggle = 0
+ctrl = 0
+anim = 7055
+sprpriority = 5
+
+[State 3012, 2]
+type = PlaySnd
+trigger1 = Time = 2
+value = 24,1
+
+; wind sound
+[State 3000, snd]
+type = PlaySnd
+trigger1 = Time = 2
+value = 13,1
+volume = 255
+abspan = 1
+
+[State 3012, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 3012, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+ignorehitpause = 1
+
+[State 3010, 2]
+type = HitDef
+trigger1 = Time % 3 = 0 && Time <= 72
+attr = A, HP                     
+damage = 6, 1                 
+animtype = Heavy                 
+guardflag = MA                  
+hitflag = MAFP                  
+priority = 6 , Hit               
+sprpriority = 6
+pausetime = 0, 2
+guard.sparkno = -1
+;hitsound = S20, 0
+guardsound = 6, 0                
+ground.type = Low               
+ground.slidetime = 57
+ground.hittime  = 20             
+ground.velocity = -5
+airguard.velocity = -1     
+air.type = Low                  
+air.velocity = -5, -1           
+air.hittime = 20
+fall = 1
+air.fall = 1
+fall.recover = 0
+palfx.time = 60
+palfx.add = 0,156,198
+palfx.mul = 13,179,199
+kill = !(root,var(58)) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+[State 3010, 3]
+type = HitDef
+trigger1 = Time = 73
+attr = A, HP                     
+damage = 50                
+animtype = Heavy                 
+guardflag = MA                  
+hitflag = MAFP                  
+priority = 7,Hit               
+sprpriority = 6
+pausetime = 0, 2 
+guard.sparkno = -1
+sparkno = -1                   
+sparkxy = 0, 0              
+;hitsound = S1, 10                 
+guardsound = 6, 0                
+ground.type = High               
+ground.slidetime = 50
+ground.hittime  = 20             
+ground.velocity = -26, -7
+airguard.velocity = -5
+air.type = High                  
+air.velocity = -28, -9           
+air.hittime = 20
+fall = 1
+air.fall = 1
+fall.recover = 0
+palfx.time = 50
+palfx.add = 0,156,198
+palfx.mul = 13,179,199
+kill = !(root,var(58)) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+[State 3000, Bloco de gelo]
+type = Helper
+triggerall = NumHelper(7030)= 0 
+trigger1 = MoveHit&&time = 73
+helpertype = Normal
+ID = 3006
+name = "Boco de gelo"
+postype = p2
+pos=(enemynear,const(size.mid.pos.x)),(enemynear,const(size.mid.pos.y))+10
+stateno = 3006
+ownpal = 1
+keyctrl = 0
+supermovetime=400
+pausemovetime=400
+
+[State 3002, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+trigger2 = parent, MoveType = H
+trigger3 = parent, StateNo != 3010
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

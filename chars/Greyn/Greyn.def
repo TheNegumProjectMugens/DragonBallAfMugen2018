@@ -1,0 +1,35 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Greyn"
+displayname = "Greyn"
+versiondate = 11,01,2008
+mugenversion = 
+author = "MiaoYu"
+pal.defaults = 1,5,6,3,4,2
+
+[Files]
+sprite = cooler.sff
+anim = cooler.air
+sound = cooler.snd
+cmd = cooler.cmd
+cns = cooler.cns
+stcommon = common1.cns
+st = cooler.cns
+st1 = attacks.cns
+st2 = specials.cns
+st3 = hypers.cns
+pal1 = cooler.act
+pal2 = bukuu1.act
+pal3 = buyu+hd.act
+pal4 = sfc1.act
+pal5 = bukuu2.act
+pal6 = cooler.act
+
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

@@ -1,0 +1,297 @@
+; Common state file for M.U.G.E.N beta 2002.04.14
+;
+; System variables usage
+; ----------------------
+; Var name    Type   Purpose
+; --------    ----   -------
+; sysvar(0)   Temp   Set by state 5081 (HITL_SLIDE) to 1 to prevent
+;                    showing ground hit frame in state 5110 (HIT_LIEDOWN).
+;                    Used by guarding states.
+; sysvar(1)   Temp   Used by state 40 (Jump Start) amd 45 (Air Jump Start)
+;                    to keep track of which way to jump.
+;                    Used by state 5100 and 5110 to remember downward
+;                    velocity of player just before hitting the ground.
+;                    Used in state 5080 for storing the anim # to display.
+
+; The following states have special handling within MUGEN, and should be
+; overridden with caution:
+; Jump Start (40): airjumping bookkeeping at time = 0
+; All guard states (120-155): guard handling throughout state
+; Hit_trip, shaking (5070): defence increases at time = 0
+; Hit_bounce (5100): defence increases at time = 0, player becomes
+;                    invincible if within 10 ticks of getting up
+; Hit_liedown (5110): player changes to get-up state (5120) when ready
+; Hit_getup (5120): player's defence is restored to normal at time = 0
+; Hitfall_recover (5200): player's defence is restored at time = 0
+; Hitfall_airrecover (5210): player's defence is restored at time = 0
+
+;---------------------------------------------------------------------------
+; Stand
+[Statedef 0]
+type = S
+physics = S
+sprpriority = 0
+
+[State 0, 1]
+type = ChangeAnim
+trigger1 = Anim != 0 && Anim != 5
+trigger2 = Anim = 5 && AnimTime = 0 ;Turn anim over
+value = 0
+
+[State 0, 2]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+[State 0, 3] ;Stop moving if low velocity or 4 ticks pass
+type = VelSet
+trigger1 = time = 1
+x = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+;ignorehitpause =
+;persistent =
+
+
+;---------------------------------------------------------------------------
+; Walk
+[Statedef 20]
+type    = S
+physics = S
+sprpriority = 0
+
+[State 20, 3]
+type = ChangeAnim
+trigger1 = anim != 20
+value = 20
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =1
+x = 5
+y = -5
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =2
+x = 5
+y = -5
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =3
+x = 5
+y = -4
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =4
+x = 5
+y = -3
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =5
+x = 5
+y = -2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =6
+x = 5
+y = -1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =7
+x = 5
+y = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =8
+x = 5
+y = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =9
+x = 5
+y = 3
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =10
+x = 5
+y = 4
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =10
+x = 5
+y = 5
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem =11
+x = 5
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = command = "holdback"
+x = -2.5
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = command = "holdfwd"
+trigger1 = command = "holdback"
+value = 0
+ctrl = 1
+
+
+
+
+[State 0, Pause]
+type = Pause
+trigger1 = animelem = 11
+time = 30
+movetime = 0
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = animelem = 11
+time = 60
+freq = 60
+ampl = -4
+phase = 90
+ignorehitpause = 1
+persistent = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 11
+value = S8,0
+volume = 0
+channel = -1
+
+[State 0, PosAdd]
+type = Posset
+trigger1 = animelem =11
+y = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 50
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+value = 0
+ctrl = 1
+
+
+
+
+
+;---------------------------------------------------------------------------
+; LOSE (Time over)
+[Statedef 170]
+type = S
+ctrl = 0
+anim = 170
+velset = 0,0
+
+[State 170, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+; DRAWGAME (Time over)
+[Statedef 175]
+type = S
+ctrl = 0
+velset = 0,0
+
+[State 175, 1] ; If no anim, use go to lose state.
+type = ChangeState
+trigger1 = Time = 0
+trigger1 = !SelfAnimExist(175)
+value = 170
+
+[State 175, 2]
+type = ChangeAnim
+trigger1 = Time = 0
+value = 175
+
+[State 175, 3]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+; PREINTRO
+[Statedef 190]
+type = S
+ctrl = 0
+velset = 0,0
+
+[State 190, 1]
+type = ChangeAnim
+trigger1 = SelfAnimExist(190)
+value = 190
+
+[State 190, 2] ;Go straight to intro.
+type = ChangeState
+trigger1 = Time = 0
+value = 191
+
+;---------------------------------------------------------------------------
+; INTRO (override this state to give character an intro)
+[Statedef 191]
+type = S
+ctrl = 0
+
+[State 191, 1]
+type = ChangeState
+trigger1 = Time = 0
+value = 0
+
+
+;---------------------------------------------------------------------------
+; Continue?
+[Statedef 5500]
+type = S
+ctrl = 0
+anim = 5300
+velset = 0,0
+
+[State 5500, 1] ;Use continue animation if available
+type = ChangeAnim
+trigger1 = time = 0
+trigger1 = SelfAnimExist(5500)
+value = 5500
+
+;---------------------------------------------------------------------------
+; Initialize (at the start of the round)
+[Statedef 5900]
+type = S
+
+[State 5900, 1] ;Clear all int variables
+type = VarRangeSet
+trigger1 = roundsexisted = 0
+value = 0
+
+[State 5900, 2] ;Clear all float variables
+type = VarRangeSet
+trigger1 = roundsexisted = 0
+fvalue = 0
+
+[State 5900, 3] ;Intro for round 1
+type = ChangeState
+trigger1 = roundno = 1
+value = 190
+

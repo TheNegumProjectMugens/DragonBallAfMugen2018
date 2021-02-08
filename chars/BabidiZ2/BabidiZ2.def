@@ -1,0 +1,42 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Babidi Z2"
+displayname = "Babidi Z2"
+versiondate = 01,04,2015
+mugenversion = 14,04,2002
+author = "Balthazar, Daeron & XGargoyle"
+pal.defaults = 1,2,3,4
+
+[Files]
+sprite = files\Babidi.sff
+anim = files\Babidi.air
+sound = files\Babidi.snd
+cmd = files\Babidi.cmd
+cns = states\constants.cns
+stcommon = common1.cns
+st = states\system.cns
+st1 = config.txt
+st2 = states\state-2-3.cns
+st3 = states\helpers.cns
+st4 = states\override.cns
+st5 = states\attacks.cns
+pal1 = palettes\babidi.act
+pal2 = palettes\bibidi.act
+pal3 = palettes\Sabockee-necromancer.act
+pal4 = palettes\Long_john_Killer-Green.act
+pal5 = palettes\Black_Hatter-Bison.act
+pal6 = palettes\Sabockee-pumpkinpie.act
+pal7 = palettes\Girard-BT3.act
+pal8 = palettes\City_Hunter-Shaq.act
+pal9 = palettes\Long_john_Killer-EvilBoo.act
+pal10 = palettes\Sabockee-spawn.act
+pal11 = palettes\Sabockee-urchin.act
+pal12 = palettes\Omega-IvanOoze.act
+
+[Arcade]
+;intro.storyboard = 
+;ending.storyboard = 

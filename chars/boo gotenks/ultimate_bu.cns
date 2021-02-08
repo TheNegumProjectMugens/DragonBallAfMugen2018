@@ -1,0 +1,129 @@
+
+[Data]
+life = 1200
+attack = 100
+defence = 100
+fall.defence_up = 50
+liedown.time = 60
+airjuggle = 15
+sparkno = s555
+guard.sparkno = s556
+KO.echo = 1
+volume = 0
+
+[Size]
+xscale = 1
+yscale = 1
+ground.back = 15
+ground.front = 15
+air.back = 12
+air.front = 12
+z.width = 3
+height = 60
+attack.width = 4,4
+attack.dist = 160
+proj.attack.dist = 90
+proj.doscale = 0
+
+[Velocity]
+walk.fwd  = 2.3
+walk.back = -2.2
+run.fwd  = 4.6, 0
+run.back = -4.5, 0
+jump.neu = 0,-8.1
+jump.back = -2.55
+jump.fwd = 2.5
+runjump.back = -2.55,-8.1
+runjump.fwd = 4,-8.1
+airjump.neu = 0,-8.1
+airjump.back = -2.55
+airjump.fwd = 2.5
+
+[Movement]
+airjump.num = 1
+airjump.height = 35
+yaccel = .43
+stand.friction = .85
+crouch.friction = .82
+
+;---------------------------------------------------------------------------
+; LOSE (Time over)
+[Statedef 170]
+type = S
+ctrl = 0
+anim = 170
+velset = 0,0,0
+
+[State 170, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+time = 1
+
+
+
+;---------------------------------------------------------------------------
+; WIN
+[Statedef 180]
+type = S
+ctrl = 0
+anim = 180
+velset = 0,0,0
+
+[State 180]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 2, 2
+
+;---------------------------------------------------------------------------
+; WIN1
+[Statedef 181]
+type = S
+ctrl = 0
+anim = 181
+velset = 0,0,0
+
+[State 181]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 2, 2
+
+;---------------------------------------------------------------------------
+; WIN2
+[Statedef 182]
+type = S
+ctrl = 0
+anim = 182
+velset = 0,0,0
+
+[State 182]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 2, 2
+
+;---------------------------------------------------------------------------
+; End
+[Statedef 183]
+type = S
+ctrl = 0
+anim = 183
+velset = 0,0,0
+
+[State 183, 1]
+type = EnvColor
+trigger1 = time = 0
+value = 0, 0, 0
+time = 400
+under = 1
+
+[State 191, 2]
+type = explod
+trigger1 = time = 1
+anim = 184
+facing = 1
+postype = p1
+sprpriority = 1
+bindtime = 600
+ownpal = 1
+supermove = 1
+

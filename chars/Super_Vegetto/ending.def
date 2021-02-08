@@ -1,0 +1,30 @@
+[SceneDef]
+spr = Sprite.sff
+startscene = 0
+
+;------------------------------------
+[Scene 0]
+;;;;;;;;;;;;;;;;;;;;;;;;Fade
+fadein.time = 150       ;Time to take for fading in
+fadein.col = 0,0,0;Use 255,255,255 for white-fade
+fadeout.time = 60
+fadeout.col = 0,0,0
+;;;;;;;;;;;;;;;;;;;;;;;;Screen color
+clearcolor = 0,0,0
+;;;;;;;;;;;;;;;;;;;;;;;;Overlay Anims (from 0 to 9)
+layerall.pos = 160,120
+
+layer0.anim =  0;”wŒi
+layer0.offset = 0,0
+layer0.starttime = 0
+
+;;;;;;;;;;;;;;;;;;;;;;;‚a‚f‚l‚Ì‘I‘ð
+bgm = ending4.mp3
+bgm.loop = 0
+volume = 255
+;;;;;;;;;;;;;;;;;;;;;;;Total time
+end.time = 99999999999
+
+;”wŒi
+[Begin Action 0]
+10000,997,-220,-160, -1

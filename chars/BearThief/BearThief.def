@@ -1,0 +1,24 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name = "Bear T"        ;Name of character
+displayname = "Bear Thief" ;Name of character to display
+versiondate = 03,30,2006    ;Version date of character (MM-DD-YYYY)
+mugenversion = 04,14,2002   ;Version of M.U.G.E.N character works on
+author = "Cenobite 53"         ;Character author name
+pal.defaults = 6,3,4,2      ;Default palettes in order of preference
+
+; Files for the player
+[Files]
+cmd     = BearT.cmd   ;Command set
+cns     = BearT.cns   ;Constants
+st      = BearT.cns   ;States
+stcommon = comBearT.cns ;Common states
+sprite  = BearT.sff   ;Sprite
+anim    = BearT.air   ;Animation
+sound   = BearT.snd   ;Sound
+pal1    = BearT.act  ;Palettes (can have up to 12)
+
+

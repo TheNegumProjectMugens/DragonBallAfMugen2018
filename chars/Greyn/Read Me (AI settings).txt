@@ -1,0 +1,89 @@
+******************************************************************************
+
+Frieza AI 5 Levels
+
+by Zagi
+
+updated 1/10
+
+******************************************************************************
+
+------------------------------------------------------------------------------
+　　　　　　　　　　　　　　　　HOW TO USE
+------------------------------------------------------------------------------
+the AI difficulty level can be changed between 1 through 5
+
+Level 1&2 uses less High-Speed Dodges and more taunts.
+Level 3 begains to guard and use special moves more often.
+(Default is Level 4)
+
+To change the difficulty, open the CMD file with notepad,
+
+
+[Statedef -1]
+;AI用 
+;===========================================================================
+;                    　 AIスイッチ　＆　AIレベル設定
+;===========================================================================
+;AI
+[State -1, AI]
+type = VarSet
+triggerall = !var(59)
+triggerall = RoundState = 2
+trigger1 = Command = "AI0"
+trigger2 = Command = "AI1"
+trigger3 = Command = "AI2"
+　　　（略）
+trigger49 = Command = "AI48"
+trigger50 = Command = "AI49"
+trigger51 = Command = "AI50"
+trigger52 = numhelper(10000)
+trigger52 = helper(10000),var(59)
+
+
+var(59) = 5        ;1:Very Weak / 2: Weak / 3:Normal / 4:Strong / 5:Very strong
+	  ↑
+　　And change this number to any difficulty you like
+　　　　
+
+------------------------------------------------------------------------------
+　　　　　　　　　　　　　 SURVICE MODE
+------------------------------------------------------------------------------
+By switching this setting ON, the very kind and friendly Frieza-Sama will 
+not use his arms, until half his life bar is down. (Default is OFF)
+
+
+To switch this setting on, open the CMD file with notepad,
+
+;===========================================================================
+;                             サービスモード
+;===========================================================================
+;サービス期間開始
+[State -1, sb]
+type = VarSet
+triggerall = var(59)
+triggerall = var(40) = 0
+trigger1 = (100*life/const(data.life)) >= 50
+trigger1 = roundstate = 1
+trigger2 = (100*life/const(data.life)) >= 50
+trigger2 = roundstate = 2
+
+var(40) = 0  ;when life is more than half　 0:use arms / 1:not use arms
+  　　　　↑
+　　　　change this number to 1
+
+
+
+　　When the setting is "var(40) = 1",
+　　He will not use his arms until half of his energy is gone.
+
+　 *Level 4 & 5 is still quite powerful even when arms are not used.
+
+------------------------------------------------------------------------------
+AI作成において、㍻㌢氏のAI説明書が大変参考になりました。
+また、DBで一番好きなキャラであるフリーザを作り、
+AIを採用していただいた超神氏、
+テストプレイをして下さった皆さん、
+この場をかりてお礼を申し上げます。
+
+つたないAIですが、楽しんでいただければ幸いです。

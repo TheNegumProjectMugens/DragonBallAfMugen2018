@@ -1,0 +1,1931 @@
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||           ESPECIAL CNS         ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+; FREEZE ---> OK
+; FREEZE DIAGONAL ---> OK
+; FREEZE AEREO ---> OK
+; FREEZE AEREO DIAGONAL ---> OK
+; SLIDE ---> OK
+; ICE CLONES ---> OK
+; ICED FLOOR ---> OK
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||             FREEZE             ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+;(Lançando o freeze)
+
+[Statedef 1000]
+type = S
+movetype = A
+physics = N
+poweradd = -500
+velset = 0,0
+ctrl = 0
+anim = 1000
+sprpriority = 2
+
+[State 1000, Helper]
+type = Helper
+trigger1 = AnimElem = 3
+helpertype = Normal
+ID = 1
+name = "freeze"
+postype = p1
+pos = 5,-5
+stateno = 1002
+ownpal = 1
+keyctrl = 0
+
+[State 1000, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1003
+ctrl = 1
+
+;-------------------
+
+;( O Projetil )
+
+[Statedef 1002]
+type = S
+movetype = A
+poweradd = -50
+physics = N
+juggle = 0
+ctrl = 0
+anim = 1005
+sprpriority = 5
+
+[State 9000, 2]
+type = PlaySnd
+trigger1 = Time = 1
+value = 24,0
+
+[State 1002, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 1002, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+ignorehitpause = 1
+
+[State 1002, 2]
+type = VelSet
+trigger1 = 1
+x = 7
+
+[State 1002, particles]
+type=explod
+trigger1 = 1
+vel=-.9+(random<500),0
+accel=0,.05
+anim=7020
+sprpriority=3
+postype=p1
+pos=50,-60
+random=10,30
+facing=-1+(random<500)*2
+removetime=-2
+scale=1,.15
+ownpal=1
+ignorehitpause=1
+
+[State 1002, 1]
+type = HitDef
+trigger1 = p2stateno != 001
+trigger1 = p2stateno != 002
+trigger1 = AnimElem >= 1
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+guardflag = MF
+hitsound = S13,0
+sparkno = -1
+guard.sparkno = -1
+sparkxy = -10,-60
+pausetime = 0,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0, 0
+p2stateno = 001
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+
+[State 1002, 1]
+type = HitDef
+trigger1 = p2stateno = 001
+trigger1 = p2stateno != 002
+trigger1 = AnimElem >= 1
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+guardflag = MF
+hitsound = S13,0
+sparkno = -1
+sparkxy = -10,-60
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0,-9
+p2stateno = 002
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+[State 1002, HitSpark do Ice Freeze]
+type = Helper
+trigger1 = MoveHit||moveguarded
+helpertype = Normal
+ID = 100000
+stateno = 100000
+name = "HDHDIF"
+sprpriority = 5
+postype = p1
+pos = 70,-60
+facing = 1              
+ignorehitpause = 1 
+persistent = 1
+supermovetime = 9999
+
+[State 1002, ChangeState]
+type = DestroySelf
+trigger1 = movecontact || Time > 40
+
+;--------------------------
+
+;( Terminando a animação de Lançar o projetil )
+
+[Statedef 1003]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 1001
+sprpriority = 5
+
+[State 1003, 2]
+type = ChangeState
+trigger1 = time = 12
+ctrl = 1
+value = 0
+
+
+;--------------------------
+;====================
+; P2 Custom States  *
+;====================
+
+;( Congelado 1ª vez )
+
+[Statedef 001]
+movetype= H
+velset = 0,0
+ctrl = 0
+
+[State 001, treme]
+type = PosAdd
+trigger1 = time >= 90
+x = 1-2*(time%2)
+
+[State 001, 3]
+type = PosFreeze
+trigger1 = 1
+trigger1 = time > 1
+value = 1
+
+[State 001, 2]
+type = changeanim
+trigger1 = 1
+value = (anim)
+elem = (animelemno(0))
+
+[State 001, 3]
+type = PalFX
+trigger1 = time != 0
+add = 0,156,198
+mul = 13,179,199
+time = 1
+
+[State 001, Cair no Ar]
+type = HitOverride
+trigger1 = p2stateno = 001
+forceair = 1 
+time = -1 
+attr = SCA
+
+[State 001, 1]
+type = HitOverride
+trigger1 = Pos Y < 0
+time = 130
+attr = SCA,AA, AT, NP
+forceair = 1
+
+[State 001, CS]
+type = SelfState
+trigger1 = time = 100
+ctrl = 1
+value = 0
+
+[State 001, 3]
+type = SelfState
+trigger1 = time = 99
+trigger1 = Pos Y != 0
+ctrl = 1
+value = 5050
+
+
+;( congelado 2ª vez )
+
+[Statedef 002]
+movetype= H
+velset = 0,0
+ctrl = 0
+
+[State 002, 3]
+type = PalFX
+trigger1 = time = 0
+add = 74,198,222 
+mul = 140,222,239
+time = 1
+
+[State 002, 3]
+type = SelfState
+trigger1 = time = 1
+trigger1 = Pos Y >= 0
+ctrl = 1
+value = 5000
+
+[State 002, 3]
+type = SelfState
+trigger1 = time = 1
+trigger1 = Pos Y < 0
+ctrl = 1
+value = 5050
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||           AIR FREEZE           ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;(Lançando o projetil)
+
+[Statedef 1010]
+type = A
+movetype = A
+physics = N
+poweradd = -500
+velset = 0,0
+ctrl = 0
+anim = 1010
+sprpriority = 2
+
+[State 1010, Explod]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 7002
+pos = 20,-30
+postype = P1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+[State 1010, Helper]
+type = Helper
+trigger1 = AnimElem = 2
+name ="AirFreeze"
+ID = 2
+helpertype = Normal
+postype = p1
+pos = 0,-35
+stateno = 1012
+ownpal = 1
+keyctrl = 0
+
+[State 1010, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;-------------------
+
+;( O Projetil )
+
+[Statedef 1012]
+type = S
+movetype = A
+physics = N
+poweradd = -50
+juggle = 0
+ctrl = 0
+anim = 1005
+sprpriority = 5
+
+[State 1012, SND]
+type = PlaySnd
+trigger1 = Time = 1
+value = 24,0
+
+[State 1012, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 1012, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+ignorehitpause = 1
+
+[State 1012, 2]
+type = VelSet
+trigger1 = 1
+x = 7
+y = 0
+
+[State 1012, particles]
+type=explod
+trigger1 = 1
+vel=-.9+(random<500),0
+accel=0,.05
+anim=7020
+sprpriority=3
+postype=p1
+pos=60,-60
+random=10,30
+facing=-1+(random<500)*2
+removetime=-2
+scale=1,.15
+ownpal=1
+ignorehitpause=1
+
+[State 1012, 1]
+type = HitDef
+trigger1 = p2stateno != 001
+trigger1 = p2stateno != 002
+trigger1 = AnimElem >= 1
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+guardflag = MF
+hitsound = S13,0
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0, 0
+p2stateno = 001
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+
+[State 1012, 1]
+type = HitDef
+trigger1 = p2stateno = 001
+trigger1 = p2stateno != 002
+trigger1 = AnimElem >= 1
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+guardflag = MF
+sparkno = -1
+guard.sparkno = -1
+sparkxy = -10,-60
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0,-9
+p2stateno = 002
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+[State 1002, HitSpark do Ice Freeze]
+type = Helper
+trigger1 = MoveHit||moveguarded
+helpertype = Normal
+ID = 100000
+stateno = 100000
+name = "HDHDIF"
+sprpriority = 5
+postype = p1
+pos = 80,-60
+facing = 1              
+ignorehitpause = 1 
+persistent = 1
+supermovetime = 9999
+
+[State 1012, ChangeState]
+type = DestroySelf
+trigger1 = movecontact || Time > 40
+
+
+;--------------------------
+
+;( Terminando a animação de Lançar o projetil )
+
+[Statedef 1013]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 1011
+sprpriority = 5
+
+[State 1013, 2]
+type = ChangeState
+trigger1 = time = 12
+ctrl = 1
+value = 50
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||        FREEZE DIAGONAL         ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;(Lançando o projetil)
+
+[Statedef 1005]
+type = S
+movetype = A
+physics = N
+poweradd = -500
+velset = 0,0
+ctrl = 0
+anim = 1025
+sprpriority = 2
+
+[State 1005, Explod]
+type = Explod
+trigger1 = AnimElem = 5
+anim = 7003
+pos = 0,0
+postype = P1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+[State 1005, Helper]
+type = Helper
+trigger1 = AnimElem = 2
+ID = 3
+Name = "FreezeD"
+helpertype = Normal
+postype = p1
+pos = 60,-100
+stateno = 1017
+ownpal = 1
+keyctrl = 0
+
+[State 1005, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-------------------
+
+;( O Projetil )
+
+[Statedef 1017]
+type = S
+movetype = A
+poweradd = -50
+physics = N
+juggle = 0
+ctrl = 0
+anim = 7009
+sprpriority = 5
+
+[State 1017, SND]
+type = PlaySnd
+trigger1 = Time = 1
+value = 24,0
+
+[State 1017, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 1017, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+ignorehitpause = 1
+
+[State 1017, 2]
+type = VelSet
+trigger1 = 1
+x = 7
+y = -4
+
+[State 1017, particles]
+type=explod
+trigger1 = 1
+vel=-.9+(random<500),0
+accel=0,.05
+anim=7020
+sprpriority=3
+postype=p1
+pos=-30,20
+random=10,30
+facing=-1+(random<500)*2
+removetime=-2
+scale=1,.15
+ownpal=1
+ignorehitpause=1
+
+[State 1017, 1]
+type = HitDef
+trigger1 = p2stateno != 001
+trigger1 = p2stateno != 002
+trigger1 = AnimElem >= 1
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+guardflag = MF
+hitsound = S13,0
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,-90
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0, 0
+p2stateno = 001
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+
+[State 1017, 1]
+type = HitDef
+trigger1 = p2stateno = 001
+trigger1 = p2stateno != 002
+trigger1 = AnimElem >= 1
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+guardflag = MF
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,-90
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0,-9
+p2stateno = 002
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+[State 1002, HitSpark do Ice Freeze]
+type = Helper
+trigger1 = MoveHit||moveguarded
+helpertype = Normal
+ID = 100001
+stateno = 100001
+name = "HDHDIF1"
+sprpriority = 5
+postype = p1
+pos = 10,0
+facing = 1              
+ignorehitpause = 1 
+persistent = 1
+supermovetime = 9999
+
+[State 1002, DestroySelf]
+type = DestroySelf
+trigger1 = movecontact || Time > 40
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||      AIR FREEZE DIAGONAL       ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;(Lançando o projetil)
+
+[Statedef 1020]
+type = A
+movetype = A
+physics = N
+poweradd = -100
+velset = 0,0
+ctrl = 0
+anim = 1015
+sprpriority = 2
+
+
+[State 1020, Explod]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 7004
+pos = 25,-25
+postype = P1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+
+[State 1020, Helper]
+type = Helper
+trigger1 = AnimElem = 2
+ID = 4
+helpertype = Normal
+postype = p1
+pos = 75,-50
+stateno = 1022
+ownpal = 1
+keyctrl = 0
+
+[State 1020, 2]
+type = ChangeState
+trigger1 = Time = 25
+value = 50
+ctrl = 1
+
+;-------------------
+
+;( O Projetil )
+
+[Statedef 1022]
+type = A
+movetype = A
+physics = N
+poweradd = -50
+juggle = 0
+ctrl = 0
+anim = 7008
+sprpriority = 5
+
+[State 1022, SND]
+type = PlaySnd
+trigger1 = Time = 1
+value = 24,0
+
+[State 1022, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 1022, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+ignorehitpause = 1
+
+[State 1022, 2]
+type = VelSet
+trigger1 = 1
+x = 7
+y = 5
+
+[State 1012, particles]
+type=explod
+trigger1 = 1
+vel=-.9+(random<500),0
+accel=0,.05
+anim=7020
+sprpriority=3
+postype=p1
+pos=-30,-20
+random=10,30
+facing=-1+(random<500)*2
+removetime=-2
+scale=1,.15
+ownpal=1
+ignorehitpause=1
+
+[State 1022, 1]
+type = HitDef
+trigger1 = p2stateno != 001
+trigger1 = p2stateno != 002
+trigger1 = AnimElem >= 1
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+guardflag = MF
+hitsound = S13,0
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,-20
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0, 0
+p2stateno = 001
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+
+[State 1022, 1]
+type = HitDef
+trigger1 = p2stateno = 001
+trigger1 = p2stateno != 002
+trigger1 = AnimElem >= 1
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+hitsound = S13,0
+guardflag = MF
+sparkno = -1
+sparkxy = 0,-20
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0,-9
+p2stateno = 002
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+[State 1002, HitSpark do Ice Freeze]
+type = Helper
+trigger1 = MoveHit||moveguarded
+helpertype = Normal
+ID = 100002
+stateno = 100002
+name = "HDHDIF2"
+sprpriority = 5
+postype = p1
+pos = 10,0
+facing = 1              
+ignorehitpause = 1 
+persistent = 1
+supermovetime = 9999
+
+[State 1002, ChangeState]
+type = destroySelf
+trigger1 = movecontact || Time > 40
+
+
+;-------------------------
+
+[Statedef 1015]
+type    = S
+movetype = I
+physics = N
+ctrl = 0
+anim = 43
+sprpriority = 2
+
+[State 1015, Agora cai ]
+type = HitOverride
+trigger1 = 1 ; pra funcionar o tempo todo no state
+forceair = 1 ; isso faz ele fingir que esteja num physics = A, ou seja, ele cai, se acertado
+time = -1 ; Faz durar o tempo tudo, emboa o trigger colocado ja seja suficiente
+attr = SCA, NA, NP, SA, SP, HA, HP ; Os tipos q ele pode ser substituido..ou entaum, apenas SCA.. 
+[State 1015, 1]
+type = VelSet
+trigger1 = Time = 0
+y = 1
+
+[State 1015, 2]
+type = veladd
+trigger1 = 1
+y = 0.4
+
+[State 1015, 3]
+type = ChangeState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 52
+
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||             SLIDE              ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Statedef 2000]
+type    = S
+movetype= A
+physics = N
+juggle  = 4
+poweradd = -50
+velset = 0,0
+ctrl = 0
+anim = 2000
+sprpriority = 2
+
+[State 2000, 2]
+type = PlaySnd
+trigger1 = Time = 3
+value = 14,0
+
+[State 2000, 2]
+type = VelSet
+trigger1 = Time = 13 
+x = 5
+
+[State 2000, 2]
+type = VelAdd
+trigger1 = Time = 13
+x = 10
+
+[State 2000, 1]
+type = HitDef
+trigger1 = AnimElem = 4
+animtype = diagup
+attr = S, SA
+damage    = 50,20
+guardflag = HA
+priority = 4
+pausetime = 4,4
+sparkno = -1
+sparkxy = -1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 15
+ground.velocity = -1, -9.5
+air.velocity = -3,-4
+fall = 1
+fall.recover = 0
+p1stateno = 2001
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+[State 2000, 2]
+type = ChangeState
+trigger1 = AnimTime = 0 || MoveContact || FrontEdgeBodyDist < 45
+value = 2001
+ctrl = 1
+
+;-------------------------
+
+[Statedef 2001]
+type    = S
+movetype= I
+velset = 0,0,0
+physics = N
+ctrl = 0
+anim = 2001
+sprpriority = 2
+
+[State 2001, 1]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||         CLONE DE GELO          ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+; ( Deixando o Clone )
+
+[Statedef 2500]
+type = A
+movetype = A
+physics = N
+poweradd = -4000
+velset = 0,0
+Anim = 1016
+ctrl = 0
+sprpriority = 0
+
+;[State 2002, Agora cai]
+type = HitOverride
+trigger1 = Stateno =2505 ; pra funcionar o tempo todo no state
+forceair = 1 ; isso faz ele fingir que esteja num physics = A, ou seja, ele cai, se acertado
+time = -1 ; Faz durar o tempo tudo, emboa o trigger colocado ja seja suficiente
+attr = SCA, NA, NP, SA, SP, HA, HP ; Os tipos q ele pode ser substituido..ou entaum, apenas SCA.. 
+
+[State 2500, Explod]
+type = Explod
+trigger1 = AnimElem = 1
+anim = 7001
+pos = 0,0
+postype = P1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+[State 2510, 1]
+type = PosAdd
+trigger1 = AnimElem = 1
+x = -15
+y = 0
+
+[State 2510, 1]
+type = PosAdd
+trigger1 = AnimElem = 2 || AnimElem = 3 || AnimElem = 4  
+x = -15
+y = -7
+
+[State 2510, 1]
+type = PosAdd
+trigger1 = AnimElem = 5 || AnimElem = 6 || AnimElem = 7
+x = -13
+y = 7
+
+
+[State 2500, Helper Agachado]
+type = Helper
+trigger1 = AnimElem = 1
+trigger1 = statetype = A
+trigger1 = statetype != S
+trigger1 = statetype != C
+helpertype = Normal
+ID = 2501
+name = "Clone1"
+postype = p1
+pos = 0,0
+stateno = 2501
+ownpal = 1
+keyctrl = 0
+
+[State 2500, 2]
+type = ChangeState
+trigger1 = Animtime = 0
+ctrl = 1
+value = 10
+
+
+;------------------------------------
+
+;( O Clone de Gelo )
+
+[Statedef 2501]
+type = S
+movetype = A
+poweradd = -500
+physics = N
+juggle = 0
+Anim = 1020
+ctrl = 0
+sprpriority = 0
+
+[State 2500, SND]
+type = PlaySnd
+trigger1 = time = 1
+value = 7,0
+
+[State 2500, SND]
+type = PlaySnd
+trigger1 = Time = 87
+value = 7,0
+
+[State 2500, SND]
+type = PlaySnd
+trigger1 = movecontact
+value = 7,1
+
+[State 2501, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 2501, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+ignorehitpause = 1
+
+[State 2501, treme]
+type = PosAdd
+trigger1 = time >= 85
+x = 1-2*(time%2)
+
+[State 2501, 1]
+type = HitDef
+trigger1 = p2stateno != 001
+trigger1 = p2stateno != 002
+trigger1 = AnimTime >= 7
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+sparkno = S6006
+guard.sparkno = s900
+sparkxy = 0,-20
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0, 0
+p2stateno = 001
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+
+[State 2501, 1]
+type = HitDef
+trigger1 = p2stateno = 001
+trigger1 = p2stateno != 002
+trigger1 = AnimTime >= 7
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+sparkno = S6006
+guard.sparkno = s900
+sparkxy = 0,-20
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0,-9
+p2stateno = 002
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+
+[State 2500, Explod]
+type = Explod
+trigger1 = movecontact || Time = 87
+anim = 7001
+pos = 0,0
+postype = P1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+
+[State 2500, ChangeState]
+type = destroyself
+trigger1 = movehit || movecontact || time = 100
+value = 7001
+
+;-----------------------------
+
+;====================
+; P2 Custom States   *
+;====================
+
+;( Congelado 1ª vez )
+
+[Statedef 001]
+Type = A
+movetype= H
+velset = 0,0
+ctrl = 0
+
+[State 001, treme]
+type = PosAdd
+trigger1 = time >= 90
+x = 1-2*(time%2)
+
+[State 001, 3]
+type = PosFreeze
+trigger1 = 1
+trigger1 = time > 1
+value = 1
+
+[State 001, 2]
+type = changeanim
+trigger1 = 1
+value = (anim)
+elem = (animelemno(0))
+
+[State 001, 3]
+type = PalFX
+trigger1 = time != 0
+add = 0,156,198
+mul = 13,179,199
+time = 1
+
+[State 001, CS]
+type = SelfState
+trigger1 = time = 100
+ctrl = 1
+value = 0
+
+[State 001, 3]
+type = SelfState
+trigger1 = time = 99
+trigger1 = Pos Y < 0
+ctrl = 1
+value = 5050
+
+;( Cair se acertado enquanto congelado no ar )
+
+[State 001, 1]
+type = HitOverride
+trigger1 = Pos Y < 0
+time = 100
+attr = SCA, AA, AT, NP
+slot = 0
+stateno = 5050
+forceair = 1
+
+;( congelado 2ª vez )
+
+[Statedef 002]
+movetype= H
+velset = 0,0
+ctrl = 0
+
+[State 002, 3]
+type = PalFX
+trigger1 = time = 0
+add = 74,198,222 
+mul = 140,222,239
+time = 1
+
+[State 002, 3]
+type = SelfState
+trigger1 = time = 1
+trigger1 = Pos Y >= 0
+ctrl = 1
+value = 5000
+
+[State 002, 3]
+type = SelfState
+trigger1 = time = 1
+trigger1 = Pos Y < 0
+ctrl = 1
+value = 5050
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||     CLONE DE GELO DE PÉ        ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+; ( Deixando o Clone )
+
+[Statedef 2505]
+type = A
+movetype = A
+physics = N
+poweradd = -4000
+velset = 0,0
+Anim = 1016
+ctrl = 0
+sprpriority = 0
+
+;[State 2002, Agora cai]
+type = HitOverride
+trigger1 = Stateno =2505 ; pra funcionar o tempo todo no state
+forceair = 1 ; isso faz ele fingir que esteja num physics = A, ou seja, ele cai, se acertado
+time = -1 ; Faz durar o tempo tudo, emboa o trigger colocado ja seja suficiente
+attr = SCA, NA, NP, SA, SP, HA, HP ; Os tipos q ele pode ser substituido..ou entaum, apenas SCA.. 
+
+[State 2510, 1]
+type = PosAdd
+trigger1 = AnimElem = 1
+x = -15
+y = 0
+
+[State 2510, 1]
+type = PosAdd
+trigger1 = AnimElem = 2 || AnimElem = 3 || AnimElem = 4  
+x = -15
+y = -7
+
+[State 2510, 1]
+type = PosAdd
+trigger1 = AnimElem = 5 || AnimElem = 6 || AnimElem = 7
+x = -13
+y = 7
+
+[State 2505, Explod]
+type = Explod
+trigger1 = AnimElem = 1
+anim = 7001
+pos = 0,-20
+postype = P1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+[State 2505, Helper de Pé]
+type = Helper
+trigger1 = AnimElem = 1
+helpertype = Normal
+postype = p1
+pos = 0,0
+ID = 2506
+stateno = 2506
+ownpal = 1
+keyctrl = 0
+
+[State 2500, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+ctrl = 1
+value = 10
+;------------------------------------
+
+;( O Clone de Gelo )
+
+[Statedef 2506]
+type = S
+movetype = A
+poweradd = -500
+physics = N
+juggle = 0
+Anim = 1021
+ctrl = 0
+sprpriority = 0
+
+[State 2500, SND]
+type = PlaySnd
+trigger1 = time = 1
+value = 7,0
+
+[State 2500, SND]
+type = PlaySnd
+trigger1 = Time = 87
+value = 7,0
+
+[State 2500, SND]
+type = PlaySnd
+trigger1 = movecontact
+value = 7,1
+
+[State 2506, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 2506, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA, NA, SA, HA, NT, ST, HT
+ignorehitpause = 1
+
+[State 2006, treme]
+type = PosAdd
+trigger1 = time >= 85
+x = 1-2*(time%2)
+[State 2506, 1]
+type = HitDef
+trigger1 = p2stateno != 001
+trigger1 = p2stateno != 002
+trigger1 = AnimTime >= 7
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+sparkno = S6006
+guard.sparkno = s900
+sparkxy = 0,-20
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0, 0
+p2stateno = 001
+kill = !var(58) || 1*p2stateno = 003 ; evita que o P2 morra antes do Finish Him 
+
+
+[State 2506, 1]
+type = HitDef
+trigger1 = p2stateno = 001
+trigger1 = p2stateno != 002
+trigger1 = AnimTime >= 7
+attr = S,SP
+animtype = Hard
+damage  = 0,0
+getpower = 30
+givepower = 30
+hitflag = MAF
+sparkno = S6006
+guard.sparkno = s900
+sparkxy = 0,-20
+pausetime = 0, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+air.animtype = Back
+ground.velocity = 0, 0
+air.velocity = 0,-9
+p2stateno = 002
+
+[State 2506, Explod]
+type = Explod
+trigger1 = movecontact || Time = 87
+anim = 7001
+pos = 0,-20
+postype = P1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+[State 2506, ChangeState]
+type = destroyself
+trigger1 = movehit || movecontact || time = 100
+value = 7001
+
+
+;-------------------------------
+
+;====================
+; P2 Custom Stats   *
+;====================
+
+;( Congelado 1ª vez )
+
+[Statedef 001]
+Type = A
+movetype= H
+velset = 0,0
+ctrl = 0
+
+[State 001, treme]
+type = PosAdd
+trigger1 = time >= 90
+x = 1-2*(time%2)
+
+[State 001, 3]
+type = PosFreeze
+trigger1 = 1
+trigger1 = time > 1
+value = 1
+
+[State 001, 2]
+type = changeanim
+trigger1 = 1
+value = (anim)
+elem = (animelemno(0))
+
+[State 001, 3]
+type = PalFX
+trigger1 = time != 0
+add = 0,156,198
+mul = 13,179,199
+time = 1
+
+[State 001, CS]
+type = SelfState
+trigger1 = time = 100
+ctrl = 1
+value = 0
+
+[State 001, 3]
+type = SelfState
+trigger1 = time = 99
+trigger1 = Pos Y < 0
+ctrl = 1
+value = 5050
+
+;( Cair se acertado enquanto congelado no ar )
+
+[State 001, 1]
+type = HitOverride
+trigger1 = Pos Y < 0
+time = 100
+attr = SCA, AA, AT, NP
+slot = 0
+stateno = 5050
+forceair = 1
+
+;( congelado 2ª vez )
+
+[Statedef 002]
+movetype= H
+velset = 0,0
+ctrl = 0
+
+[State 002, 3]
+type = PalFX
+trigger1 = time = 0
+add = 74,198,222 
+mul = 140,222,239
+time = 1
+
+[State 002, 3]
+type = SelfState
+trigger1 = time = 1
+trigger1 = Pos Y >= 0
+ctrl = 1
+value = 5000
+
+[State 002, 3]
+type = SelfState
+trigger1 = time = 1
+trigger1 = Pos Y < 0
+ctrl = 1
+value = 5050
+
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+;-------------------------------
+
+; ( Fim dA Animação d Pulo )
+
+[Statedef 2513]
+type = S
+movetype = A
+physics = S
+velset = 0,0
+ctrl = 0
+sprpriority = 5
+
+[State 2513, Agora cai Z]
+type = HitOverride
+trigger1 = 1 
+forceair = 1 
+time = -1 
+attr = SCA, NA, NP, SA, SP, HA, HP 
+
+[State 2513, 3]
+type = ChangeState
+trigger1 = AnimTime = 0 
+ctrl = 1
+value = 52
+
+;====================
+; P2 Custom Stats   *
+;====================
+
+;( Congelado 1ª vez )
+
+[Statedef 001]
+Type = A
+movetype= H
+velset = 0,0
+ctrl = 0
+
+[State 001, treme]
+type = PosAdd
+trigger1 = time >= 90
+x = 1-2*(time%2)
+
+[State 001, 3]
+type = PosFreeze
+trigger1 = 1
+trigger1 = time > 1
+value = 1
+
+[State 001, 2]
+type = changeanim
+trigger1 = 1
+value = (anim)
+elem = (animelemno(0))
+
+[State 001, 3]
+type = PalFX
+trigger1 = time != 0
+add = 0,156,198
+mul = 13,179,199
+time = 1
+
+[State 001, CS]
+type = SelfState
+trigger1 = time = 100
+ctrl = 1
+value = 0
+
+[State 001, 3]
+type = SelfState
+trigger1 = time = 99
+trigger1 = Pos Y < 0
+ctrl = 1
+value = 5050
+
+;( Cair se acertado enquanto congelado no ar )
+
+[State 001, 1]
+type = HitOverride
+trigger1 = Pos Y < 0||P2life <= 1
+time = 100
+attr = SCA, AA, AT, NP
+slot = 0
+stateno = 5050
+forceair = 1
+
+;( congelado 2ª vez )
+
+[Statedef 002]
+movetype= H
+velset = 0,0
+ctrl = 0
+
+[State 002, 3]
+type = PalFX
+trigger1 = time = 0
+add = 74,198,222 
+mul = 140,222,239
+time = 1
+
+[State 002, 3]
+type = SelfState
+trigger1 = time = 1
+trigger1 = Pos Y >= 0
+ctrl = 1
+value = 5000
+
+[State 002, 3]
+type = SelfState
+trigger1 = time = 1
+trigger1 = Pos Y < 0
+ctrl = 1
+value = 5050
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+;                           ||                                ||                              ;
+;                           ||           ICED FLOOR           ||                              ;
+;                           ||                                ||                              ;
+;                           ||||||||||||||||||||||||||||||||||||                              ;
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;(Lançando o Gelo)
+
+[Statedef 2600]
+type = S
+movetype = A
+physics = N
+poweradd = -500
+velset = 0,0
+ctrl = 0
+anim = 2500
+
+[State 2600, Explod]
+type = Explod
+trigger1 = AnimElem = 3
+anim = 7004
+pos = 0,0
+postype = P1
+supermovetime = -1
+facing = 1
+sprpriority = 3
+removeongethit = 1
+
+[State 2600, Helper]
+type = Helper
+trigger1 = AnimElem = 3
+helpertype = Normal
+postype = p1
+pos = 0,0
+stateno = 2601
+ownpal = 1
+keyctrl = 0
+
+[State 2600, Helper]
+type = Helper
+trigger1 = AnimElem = 3
+helpertype = Normal
+postype = p1
+pos = 0,0
+stateno = 2602
+Id = 2602
+name = "Iced floor"
+ownpal = 1
+keyctrl = 0
+sprpriority = -5
+
+[State 2600, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-------------------
+
+;( O Projetil )
+
+[Statedef 2601]
+type = S
+movetype = A
+poweradd = -50
+physics = N
+juggle = 0
+ctrl = 0
+anim = 2550
+sprpriority = 1
+
+[State 1000, SND]
+type = PlaySnd
+trigger1 = Time = 1
+value = 24,0
+
+[State 2601, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 2601, ChangeAnim]
+type = DestroySelf
+trigger1 =  AnimTime = 0
+
+;--------------------------
+
+[Statedef 2602]
+type = S
+movetype = A
+poweradd = 0
+physics = N
+juggle = 0
+ctrl = 0
+anim = 2600
+
+[State 2602, Assertspecial]
+type = Assertspecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 2602, 2]
+type = VelSet
+trigger1 = 1
+x = 0
+y = 0
+
+[State 2602, 2]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+animtype  = Medium
+damage    = 0,0
+getpower = 0,0
+givepower = 0,0
+hitflag = MAF
+pausetime = 0, 0
+sparkno = -1
+guard.sparkno = -1
+hitsound = -1
+guardsound = 6,0
+ground.type = Low
+ground.slidetime = 0
+ground.hittime  = 0
+ground.velocity = 0
+air.velocity = 0,0
+air.hittime = 0   
+air.fall = 0
+numhits = 1
+p2stateno = 006
+kill = !var(58) || 1*p2stateno = 003
+
+[State 2602, 3]
+type = Sprpriority
+trigger1 = movehit
+value = -9999
+
+[State 2602, Destroy]
+type = DestroySelf
+trigger1 =  AnimTime = 0
+
+;-----------------------
+
+;====================
+; P2 Custom States  *
+;====================
+
+; P2 sendo puxado
+[Statedef 006]
+movetype = H
+velset = 0,0
+ctrl = 0
+anim = 5012
+sprpriority = 2
+
+[State 006, 3]
+type = VelSet
+trigger1 = time <= 89
+x = 0.6
+y = 0
+
+[State 006, 3]
+type = SelfState
+trigger1 = Time = 95
+ctrl = 1
+value = 0
+
+;-----------------------------------------------------
+;------------Helper do Hit do Ice freeze--------------
+;-----------------------------------------------------
+
+
+
+[Statedef 100000]
+type = S
+anim = 7010
+sprpriority = 7
+
+[State 200, particles do Hit]
+type=explod
+trigger1=Time%2&&Time<15
+vel=ceil((-500+random)/80),ceil((-500+random)/80)
+anim=7020
+sprpriority=5
+postype=p1
+pos=0,0
+facing=-1+(random<500)*2
+random=5,5
+removetime=-2
+ownpal=1
+scale=1,.15
+pausemovetime=300
+supermovetime=300
+
+[State 9999, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 9999, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;----------Diagonal-----------
+
+[Statedef 100001]
+type = S
+anim = 7012
+sprpriority = 7
+
+[State 200, particles do Hit]
+type=explod
+trigger1=Time%2&&Time<15
+vel=ceil((-500+random)/80),ceil((-500+random)/80)
+anim=7020
+sprpriority=5
+postype=p1
+pos=0,0
+facing=-1+(random<500)*2
+random=5,5
+removetime=-2
+ownpal=1
+scale=1,.15
+pausemovetime=300
+supermovetime=300
+
+[State 9999, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 9999, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;----------DiagonalAereo-----------
+
+[Statedef 100002]
+type = S
+anim = 7011
+sprpriority = 7
+
+[State 200, particles do Hit]
+type=explod
+trigger1=Time%2&&Time<15
+vel=ceil((-500+random)/80),ceil((-500+random)/80)
+anim=7020
+sprpriority=5
+postype=p1
+pos=0,0
+facing=-1+(random<500)*2
+random=5,5
+removetime=-2
+ownpal=1
+scale=1,.15
+pausemovetime=300
+supermovetime=300
+
+[State 9999, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 9999, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime = 0
